@@ -212,6 +212,8 @@
     <Content Include="Content\c3.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Content\jquery.dataTables.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\meanmenu.min.css" />
     <Content Include="Content\normalize.css" />
@@ -259,6 +261,8 @@
     <Content Include="Scripts\jquery-jvectormap-2.0.2.min.js" />
     <Content Include="Scripts\jquery-jvectormap-world-mill-en.js" />
     <Content Include="Scripts\jquery.counterup.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.flot.js" />
     <Content Include="Scripts\jquery.flot.pie.js" />
     <Content Include="Scripts\jquery.flot.resize.js" />
