@@ -12,7 +12,7 @@ namespace Shaheer_BugTracker.Models
             Tickets = new HashSet<Ticket>();
         }
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string StatusName { get; set; }
         public string Description { get; set; }
 
         //Navigation

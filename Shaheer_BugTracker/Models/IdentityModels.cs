@@ -64,7 +64,7 @@ namespace Shaheer_BugTracker.Models
 
         public System.Data.Entity.DbSet<Shaheer_BugTracker.Models.TicketPriority> TicketPriorities { get; set; }
 
-        public System.Data.Entity.DbSet<Shaheer_BugTracker.Models.TicketStatus> TicketStatus { get; set; }
+        public System.Data.Entity.DbSet<Shaheer_BugTracker.Models.TicketStatus> TicketStatuses { get; set; }
 
         public System.Data.Entity.DbSet<Shaheer_BugTracker.Models.TicketType> TicketTypes { get; set; }
 

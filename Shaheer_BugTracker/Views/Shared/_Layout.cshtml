@@ -60,7 +60,6 @@
 </head>
 
 <body>
-
     <!-- Header top area start-->
     <div class="header-top-area">
         <div class="container">
@@ -720,7 +719,7 @@
                                     <a href=@Url.Action("index","projects","project")>Projects</a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contacts</a>
+                                    <a href=@Url.Action("index","tickets","ticket")>Tickets</a>
                                 </li>
                                 <li>
                                     <a href="review.html">Review</a>
@@ -739,6 +738,39 @@
         </div>
     </div>
     <!-- Main Menu area End-->
+    <!-- Mobile Menu start -->
+    <div class="mobile-menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs custom-menu-wrap">
+                    </ul>
+                    <div class="tab-content custom-menu-content">
+                        <div id="Page" class="tab-pane in active tab-custon-menu-bg animated flipInX">
+                            <ul class="main-menu-dropdown">
+                                <li>
+                                    <a href=@Url.Action("Login","Account",null)>Login</a>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("Register", "Account", null)>Register</a>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("ManageRoles", "Admin" , "Admin")>Manage Roles</a>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("index","projects","project")>Projects</a>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("index","tickets","ticket")>Tickets</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu end -->
     @RenderBody()
     <!-- jquery============================================ -->
     <script src="~/Scripts/jquery-1.11.3.min.js"></script>
@@ -808,7 +840,7 @@
     <script>
         $('#projectTable').DataTable();
     </script>
-    @RenderSection("scripts",false)
+    @RenderSection("scripts", false)
 </body>
 
 </html>

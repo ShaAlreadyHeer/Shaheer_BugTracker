@@ -116,24 +116,32 @@ namespace Shaheer_BugTracker.Migrations
             #endregion
 
             #region Tickets
-            //context.TicketStatuses.AddOrUpdate(
-            //    u => u.StatusName,
-            //    new TicketStatus { StatusName = "Open", Description = "A newly created or simply unassigned ticket" },
-            //    new TicketStatus { StatusName = "Assigned", Description = "A Ticket that has been assigned but has yet to be worked on" },
-            //    new TicketStatus { StatusName = "In Progress", Description = "A Ticket has been assigned and is currently being worked on" },
-            //    new TicketStatus { StatusName = "Resolved", Description = "A Ticket has been completed" },
-            //    new TicketStatus { StatusName = "Archived", Description = "A Ticket that has been archived" }
-            //    );
+            context.TicketStatuses.AddOrUpdate(
+                u => u.StatusName,
+                new TicketStatus { StatusName = "Open", Description = "A newly created or simply unassigned ticket" },
+                new TicketStatus { StatusName = "Assigned", Description = "A Ticket that has been assigned but has yet to be worked on" },
+                new TicketStatus { StatusName = "In Progress", Description = "A Ticket has been assigned and is currently being worked on" },
+                new TicketStatus { StatusName = "Resolved", Description = "A Ticket has been completed" },
+                new TicketStatus { StatusName = "Archived", Description = "A Ticket that has been archived" }
+                );
 
-            //context.TicketStatuses.AddOrUpdate(
-            //    u => u.StatusName,
-            //    new TicketPriority { StatusName = "Immediate", Description = "This priority levels require completion within 2 days" },
-            //    new TicketPriority { StatusName = "Highest", Description = "This priority levels requires completion within 1 week" },
-            //    new TicketPriority { StatusName = "High", Description = "This priority levels requires completion within 1 week" },
-            //    new TicketPriority { StatusName = "Medium", Description = "This priority levels requires completion within 1 week" },
-            //    new TicketPriority { StatusName = "Low", Description = "This priority levels requires completion within 1 week" },
-            //    new TicketPriority { StatusName = "None", Description = "This priority levels does not require any attention" }
-            //    );
+            context.TicketPriorities.AddOrUpdate(
+                u => u.PriorityName,
+                new TicketPriority { PriorityName = "Immediate", Description = "This priority levels require completion within 2 days" },
+                new TicketPriority { PriorityName = "Highest", Description = "This priority levels requires completion within 1 week" },
+                new TicketPriority { PriorityName = "High", Description = "This priority levels requires completion within 1 week" },
+                new TicketPriority { PriorityName = "Medium", Description = "This priority levels requires completion within 1 week" },
+                new TicketPriority { PriorityName = "Low", Description = "This priority levels requires completion within 1 week" },
+                new TicketPriority { PriorityName = "None", Description = "This priority levels does not require any attention" }
+                );
+
+            context.TicketTypes.AddOrUpdate(
+                u => u.TypeName,
+                new TicketType { TypeName = "Defect", Description = "A defect in the software that has been identified" },
+                new TicketType { TypeName = "Feature Request", Description = "The client has called and requested a new feature to be added" },
+                new TicketType { TypeName = "Documentation Request", Description = "The client has called requesting documentation for a specific problem" },
+                new TicketType { TypeName = "Training Request", Description = "The client has called requesting training on the software" }
+                );
             #endregion
 
         }
