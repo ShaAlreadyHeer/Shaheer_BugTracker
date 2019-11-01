@@ -10,7 +10,7 @@ using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

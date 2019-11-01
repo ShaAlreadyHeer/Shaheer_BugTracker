@@ -7,12 +7,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Shaheer_BugTracker.Helpers.HelperClass;
 
 namespace Shaheer_BugTracker.Helpers
 {
     public class ProjectsHelper
     {
-        
+
 
         ////GET: EditUser
         //public ActionResult EditUser(string id)

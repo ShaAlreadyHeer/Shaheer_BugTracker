@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Shaheer_BugTracker.Models.UserProjectListViewModel>
+
+@{
+    ViewBag.Title = "Manage Project Users";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="container">
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ListBox("Projects", null, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <div class="col-md-4">
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Project Manager</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.DropDownList("ProjectManagerId", null, new { @class = "form-control" })
+                </div>
+            </div>
+        <div>
+            <div class="col-md-12">
+                <h3>Developers</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ListBox("Developers", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-12">
+                <h3>Submitters</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ListBox("Submitters", null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        }
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("User Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Role")
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Name)
+                    </td>
+                    <td>
+                        @foreach(var name in item.ProjectNames)
+                        {
+                            @name <br />
+                        }
+                    </td>
+                </tr>
+            }
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -136,4 +136,16 @@ namespace Shaheer_BugTracker.Models
         }
 
     }
+
+    public class UserProjectListViewModel
+    {
+        public string Name { get; set; }
+        public List<string> ProjectNames { get; set; }
+
+        public UserProjectListViewModel()
+        {
+            ProjectNames = new List<string>();
+        }
+    }
+
 }

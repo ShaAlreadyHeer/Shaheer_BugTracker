@@ -7,12 +7,39 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shaheer_BugTracker.Models;
+using Shaheer_BugTracker.Helpers;
+using static Shaheer_BugTracker.Helpers.HelperClass;
 
 namespace Shaheer_BugTracker.Controllers
 {
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private HelperClass helperRoles = new HelperClass();
+        private UserRolesHelper userRoles = new UserRolesHelper();
+        private UserProjectsHelper userProjectsHelper = new UserProjectsHelper();
+
+        public ActionResult ManageUsers(int id)
+        {
+            ViewBag.ProjectId = id;
+
+            #region PM Sections
+            var pmId = userProjectsHelper.ListUsersOnProjectInRole(id, "Project_Manager").FirstOrDefault();
+            ViewBag.ProjectManagerId = new SelectList(userRoles.UsersInRole("Project_Manager"), "Id", "Email", pmId);
+            #endregion
+
+            #region Dev Section
+            ViewBag.Developers = new MultiSelectList(userRoles.UsersInRole("Developer"), "Id", "Email", 
+                userProjectsHelper.ListUsersOnProjectInRole(id, "Developer"));
+            #endregion
+
+            #region Sub Section
+            ViewBag.submitters = new MultiSelectList(userRoles.UsersInRole("Submitters"), "Id", "Email",
+                userProjectsHelper.ListUsersOnProjectInRole(id, "Submitters"));
+            #endregion
+
+            return View();
+        }
 
         // GET: Projects
         public ActionResult Index()
@@ -47,7 +74,7 @@ namespace Shaheer_BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize (Roles ="Admin")]
+        //[Authorize (Roles ="Admin")]
         public ActionResult Create([Bind(Include = "Id,Name,Description")] Project project)
         {
             if (ModelState.IsValid)

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shaheer_BugTracker.Helpers;
 
 namespace Shaheer_BugTracker.Helpers
 {
@@ -63,7 +64,7 @@ namespace Shaheer_BugTracker.Helpers
             private UserManager<ApplicationUser> manager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(new ApplicationDbContext()));
             private ApplicationDbContext db = new ApplicationDbContext();
-
+            private UserRolesHelper roleHelper = new UserRolesHelper();
             public bool IsOnProject(string userId, int projectId)
             {
                 if(db.Projects.Find(projectId).Users.Contains(db.Users.Find(userId)))
@@ -105,10 +106,26 @@ namespace Shaheer_BugTracker.Helpers
                 return db.Users.Find(userId).Projects;
             }
 
-            public ICollection<ApplicationUser> ListUersNotOnProject(int projectId)
+            public ICollection<ApplicationUser> ListUsersNotOnProject(int projectId)
             {
                 return db.Users.Where(u => u.Projects.All(p => p.Id != projectId)).ToList();
             }
+
+            public ICollection<ApplicationUser> ListUsersOnProjectInRole(int projectId, string roleName)
+            {
+                var resultList = new List<ApplicationUser>();
+
+                foreach (var user in ListUsersOnProject(projectId))
+                {
+                    if (roleHelper.IsUserInRole(user.Id, roleName))
+                    {
+                        resultList.Add(user);
+                    }
+                }
+    
+                return resultList;
+            }
+
         }
 
         public class AdminUserViewModel
