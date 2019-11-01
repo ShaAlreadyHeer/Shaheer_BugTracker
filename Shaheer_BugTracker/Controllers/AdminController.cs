@@ -55,7 +55,7 @@ namespace Shaheer_BugTracker.Controllers
             return RedirectToAction("Dashboard", "Home");
         }
 
-        //[Authorize(Roles = "Admin, Project_Manager")]
+        [Authorize(Roles = "Admin, Project_Manager")]
         public ActionResult ManageProjectUsers()
         {
             ViewBag.Projects = new MultiSelectList(db.Projects, "Id", "Name");

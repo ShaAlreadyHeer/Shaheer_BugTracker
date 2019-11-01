@@ -10,7 +10,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table" id="ticketTable">
+    <thead>
+
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AssignedToUser.FirstName)
@@ -44,8 +46,11 @@
         </th>
         <th></th>
     </tr>
+    </thead>
 
-@foreach (var item in Model) {
+    <tbody>
+    @foreach (var item in Model) 
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AssignedToUser.FirstName)
@@ -83,6 +88,7 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
-}
+    }
+    </tbody>
 
 </table>

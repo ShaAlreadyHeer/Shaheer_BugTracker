@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
@@ -46,15 +47,17 @@ namespace Shaheer_BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Comment,Created,TicketId,UserId")] TicketComment ticketComment)
+        public ActionResult Create([Bind(Include = "Comment,TicketId,UserId")] TicketComment ticketComment)
         {
             if (ModelState.IsValid)
             {
+                ticketComment.Comment = ticketComment.Comment;
+                ticketComment.Created = DateTime.Now;
+                ticketComment.UserId = User.Identity.GetUserId();
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(ticketComment);
         }
 
