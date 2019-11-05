@@ -46,10 +46,12 @@ namespace Shaheer_BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TicketId,FilePath,Description,Created,UserId")] TicketAttachment ticketAttachment)
+        public ActionResult Create([Bind(Include = "Id,TicketId,FilePath,Description,Created,UserId")] TicketAttachment ticketAttachment,HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                ticketAttachment.FilePath = image.ToString();
+                ticketAttachment.Created = DateTime.Now;
                 db.TicketAttachments.Add(ticketAttachment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
