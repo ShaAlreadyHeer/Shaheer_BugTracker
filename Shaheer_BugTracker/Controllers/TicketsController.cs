@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Shaheer_BugTracker.Helpers;
 using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
@@ -53,10 +57,17 @@ namespace Shaheer_BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket, HttpPostedFileBase image, TicketAttachment ticketAttachment)
         {
             if (ModelState.IsValid)
             {
+                if (AttachmentUploadValidator.IsWebFriendlyAttachment(image))
+                {
+                    var filename = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), filename));
+                    ticketAttachment.FilePath = "/Uploads/" + filename;
+                }
+
                 ticket.Created = DateTime.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
@@ -142,6 +153,46 @@ namespace Shaheer_BugTracker.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // POST: Tickets/Assign
+        public ActionResult AssignTicket(int? id)
+        {
+            UserRolesHelper helper = new UserRolesHelper();
+            var ticket = db.Tickets.Find(id);
+            var users = helper.UsersInRole("DEVELOPER").ToList();
+            ViewBag.AssignedToUserId = new SelectList(users, "Id", "DisplayName", ticket.AssignedToUserId);
+
+            return View(ticket);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AssignTicket(Ticket model)
+        {
+            var ticket = db.Tickets.Find(model.Id);
+            ticket.AssignedToUserId = model.AssignedToUserId;
+            db.SaveChanges();
+            var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
+            try
+            {
+                EmailService ems = new EmailService();
+                IdentityMessage msg = new IdentityMessage();
+                ApplicationUser user = db.Users.Find(model.AssignedToUserId);
+                msg.Body = "You have been assgined a new Ticket. " + Environment.NewLine +
+                    "Please click the following link to view the details " + 
+                    "<a href=\"" + callbackUrl + "\">NEW TICKET</a>";
+                msg.Destination = user.Email;
+                msg.Subject = "Invite To Household";
+
+                await ems.SendMailAsync(msg);
+            }
+            catch (Exception ex)
+            {
+                await Task.FromResult(0);
+            }
+            return RedirectToAction("Index");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

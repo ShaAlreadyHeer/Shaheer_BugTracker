@@ -5,6 +5,7 @@
     ViewBag.Title = "Register";
 }
 
+@Html.AntiForgeryToken()
     <section>
         <!-- Breadcome start-->
         <div class="breadcome-area mg-t-40">
@@ -54,8 +55,10 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                                 {
+                                    @Html.AntiForgeryToken()
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="login-input-head">
@@ -66,14 +69,13 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="login-input-area register-mg-rt">
-                                                    @*@Html.TextBoxFor(m => m.RegisterVM.FirstName, new{@class="form-control",placeholder="FirstName")*@
-                                                    <input type="text" name="text" />
+                                                    @Html.TextBoxFor(m => m.RegisterVM.FirstName, new { @class = "form-control", placeholder = "First Name" })
                                                     <i class="fa fa-user login-user"></i>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="login-input-area">
-                                                    <input type="text" name="text" />
+                                                    @Html.TextBoxFor(m => m.RegisterVM.LastName, new { @class = "form-control", placeholder = "Last Name" })
                                                     <i class="fa fa-user login-user"></i>
                                                 </div>
                                             </div>
@@ -88,7 +90,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="login-input-area">
-                                            <input type="text" name="username" />
+                                            @Html.TextBoxFor(m => m.RegisterVM.Email, new { @class = "form-control", placeholder = "Email" })
                                             <i class="fa fa-user login-user"></i>
                                         </div>
                                     </div>
@@ -101,7 +103,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="login-input-area">
-                                            <input type="email" name="email" />
+                                            @Html.TextBoxFor(m => m.RegisterVM.Email, new { @class = "form-control", placeholder = "Email" })
                                             <i class="fa fa-envelope login-user" aria-hidden="true"></i>
                                         </div>
                                     </div>
@@ -114,7 +116,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="login-input-area">
-                                            <input type="password" name="password" />
+                                            @Html.TextBoxFor(m => m.RegisterVM.Password, new { @class = "form-control", placeholder = "Password" })
                                             <i class="fa fa-lock login-user"></i>
                                         </div>
                                     </div>
@@ -122,12 +124,12 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="login-input-head">
-                                            <p>Confarm Password</p>
+                                            <p>Confirm Password</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="login-input-area">
-                                            <input type="password" name="confarm_password" />
+                                            @Html.TextBoxFor(m => m.RegisterVM.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
                                             <i class="fa fa-lock login-user"></i>
                                         </div>
                                     </div>
@@ -157,11 +159,12 @@
                                     <div class="col-lg-8">
                                         <div class="login-button-pro">
                                             <button type="submit" class="login-button login-button-rg">Log In</button>
-                                            <button type="submit" class="login-button login-button-lg">Register</button>
+                                            <button type="submit" class="btn btn-success"></button>
+                                            @*<button type="submit" class="login-button login-button-lg">Register</button>*@
                                         </div>
                                     </div>
                                 </div>
-                                }
+                            }
                             </div>
                         </div>
                 </div>

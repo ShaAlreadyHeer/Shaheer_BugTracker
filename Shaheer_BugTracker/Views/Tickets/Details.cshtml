@@ -127,22 +127,21 @@
     }
     </div>
 
-    @using (Html.BeginForm("Create","TicketAttachments",FormMethod.Post))
+    @using (Html.BeginForm("Create","TicketAttachments",FormMethod.Post , new { enctype = "Multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.Hidden("TicketId",Model.Id)
-
         @Html.Label("Ticket Attachment", htmlAttributes: new { @class = "control-label col-md-2"})
-   
+
             <input type="file" name="image" class="form-control" />
             @Html.ValidationMessage("Attach.Filepath", "", new { @class ="text-danger"})
-       
+
         <button type="submit" class="btn btn-sm btn-primary">Add Attachment</button>
     }
     <div class="form-group">
-        @foreach (var attach in Model.TicketAttachments)
+        @foreach (var Attach in Model.TicketAttachments)
         {
-            <a href=@Url.Content(attach.FilePath) target="_blank">@attach.FilePath.Split('/')[2]</a>
+            <a href="@Url.Content(Attach.FilePath)" target="_blank">@Attach.FilePath.Split('/')[2]</a> <br />
         }
     </div>
 </div>

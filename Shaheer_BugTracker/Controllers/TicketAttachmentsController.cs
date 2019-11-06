@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Shaheer_BugTracker.Helpers;
 using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
@@ -50,7 +52,12 @@ namespace Shaheer_BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                ticketAttachment.FilePath = image.ToString();
+                if (AttachmentUploadValidator.IsWebFriendlyAttachment(image))
+                    {
+                    var filename = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), filename));
+                    ticketAttachment.FilePath = "/Uploads/" + filename;
+                    }
                 ticketAttachment.Created = DateTime.Now;
                 db.TicketAttachments.Add(ticketAttachment);
                 db.SaveChanges();
