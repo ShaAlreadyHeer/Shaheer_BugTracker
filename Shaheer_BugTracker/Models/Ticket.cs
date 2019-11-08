@@ -20,7 +20,7 @@ namespace Shaheer_BugTracker.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTimeOffset Created { get; set; }
-        public DateTime? Updated { get; set; }
+        public DateTimeOffset? Updated { get; set; }
         public string ProjectId { get; set; }
         public int TicketTypeId { get; set; }
         public int TicketPriorityId { get; set; }

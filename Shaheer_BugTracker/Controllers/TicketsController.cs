@@ -17,7 +17,6 @@ namespace Shaheer_BugTracker.Controllers
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private TicketHistoryHelper histHelp = new TicketHistoryHelper();
 
         // GET: Tickets
         public ActionResult Index()
@@ -115,16 +114,9 @@ namespace Shaheer_BugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Record old ticket before it gets updated
-                var oldTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
-
                 ticket.Updated = DateTime.Now;
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-
-                var newTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
-
-                histHelp.RecordHistoricalChanges(oldTicket, newTicket);
                 return RedirectToAction("Index");
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);

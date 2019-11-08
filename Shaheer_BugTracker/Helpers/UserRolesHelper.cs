@@ -49,11 +49,5 @@ namespace Shaheer_BugTracker.Helpers
             }
             return resultList;
         }
-
-        public string GetFirstName(string id)
-        {
-            var user = db.Users.Find(id);
-            return user.FirstName;
-        }
     }
 }

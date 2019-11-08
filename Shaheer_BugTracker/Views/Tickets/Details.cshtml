@@ -93,12 +93,6 @@
 
         </dl>
 </div>
-<p>
-    @foreach(var history in Model.TicketHistories)
-    {
-        <p>The @history.Property has been changed from @history.OldValue.ToString() to @history.NewValue.ToString()</p>
-    }
-</p>
 <div class="row">
     <div>
         @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))

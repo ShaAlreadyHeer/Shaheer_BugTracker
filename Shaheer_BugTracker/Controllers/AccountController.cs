@@ -91,37 +91,17 @@ namespace Shaheer_BugTracker.Controllers
             }
         }
 
-        //POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(LoginRegisterViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                var user = new ApplicationUser
-                {
-                    UserName = model.RegisterVM.Email,
-                    DisplayName = model.RegisterVM.Email,
-                    Email = model.RegisterVM.Email,
-                    FirstName = model.RegisterVM.FirstName,
-                    LastName = model.RegisterVM.LastName
-                };
-                var result = await UserManager.CreateAsync(user, model.RegisterVM.Password);
-                if(result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ComfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\"here</a>");
-
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
-            }
-            return View(model);
-        }
+        // POST: /Account/Register
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Register(LoginRegisterViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+        //}
 
         //
         // GET: /Account/VerifyCode
