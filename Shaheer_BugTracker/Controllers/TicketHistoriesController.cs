@@ -13,7 +13,7 @@ namespace Shaheer_BugTracker.Controllers
     public class TicketHistoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: TicketHistories
         public ActionResult Index()
         {

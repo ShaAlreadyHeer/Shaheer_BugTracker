@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Shaheer_BugTracker.Models.TicketHistory>
-
+@using Shaheer_BugTracker.Helpers;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var userHelper = new UserRolesHelper();
 }
 
 <h2>Index</h2>
@@ -10,6 +11,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -25,10 +27,7 @@
             @Html.DisplayNameFor(model => model.NewValue)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Changed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdaterId)
+            @Html.DisplayName("User")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UpdateDate)
@@ -51,10 +50,7 @@
             @Html.DisplayFor(modelItem => item.NewValue)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Changed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdaterId)
+            @userHelper.GetFirstName(item.UserId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UpdateDate)
