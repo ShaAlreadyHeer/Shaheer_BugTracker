@@ -12,10 +12,12 @@ namespace Shaheer_BugTracker.Models
         public string NotificationBody { get; set; }
         public DateTime CreatedDate { get; set; }
         public string RecipientId { get; set; }
+        public string SenderId { get; set; }
         public bool IsRead { get; set; }
 
         public Ticket Ticket { get; set; }
         public ApplicationUser Recipient { get; set; }
+        public ApplicationUser Sender { get; set; }
 
 
     }

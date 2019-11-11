@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@using Shaheer_BugTracker.Helpers;
+
+
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -103,59 +106,42 @@
                     <div class="header-right-info">
                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
                             <li class="nav-item dropdown">
-                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span class="adminpro-icon adminpro-chat-pro"></span><span class="indicator-ms"></span></a>
+                                <a href=@Url.Action("Index", "TicketNotifcations") data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                <span class="adminpro-icon adminpro-chat-pro"></span>
+                                <span class="indicator-ms">@NotificationHelper.GetUnreadNotifications().Count()</span>
+                                </a>
                                 <div role="menu" class="author-message-top dropdown-menu animated flipInX">
+                                    @foreach(var unreadNotification in NotificationHelper.GetUnreadNotifications())
+                                    {
+
+                                        @Html.BeginForm("Dismiss","TicketNotifications",FormMethod.Get)
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("Id",unreadNotification.Id)
+
+                                            @*<span class="image">
+                                                <img src="@unreadNotification.SenderId.AvatarPath" />
+                                            </span>*@
+                                            <span>
+                                                <span>@unreadNotification.Sender</span>
+                                                <span class="time">Created: @unreadNotification.CreatedDate.ToString("MMM dd, yyyy")</span>
+                                            </span>
+                                            <span class="message">
+                                                @unreadNotification.NotificationBody
+                                            </span>
+                                            <br />
+                                            <button type="submit">Dismiss</button>
+                                            
+                                        }
+
+
+                                    }
                                     <div class="message-single-top">
                                         <h1>Message</h1>
                                     </div>
                                     <ul class="message-menu">
                                         <li>
-                                            <a href="#">
-                                                <div class="message-img">
-                                                    <img src="Images/message/1.jpg" alt="">
-                                                </div>
-                                                <div class="message-content">
-                                                    <span class="message-date">16 Sept</span>
-                                                    <h2>Advanda Cro</h2>
-                                                    <p>Please done this project as soon possible.</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="message-img">
-                                                    <img src="Images/message/4.jpg" alt="">
-                                                </div>
-                                                <div class="message-content">
-                                                    <span class="message-date">16 Sept</span>
-                                                    <h2>Sulaiman din</h2>
-                                                    <p>Please done this project as soon possible.</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="message-img">
-                                                    <img src="Images/message/3.jpg" alt="">
-                                                </div>
-                                                <div class="message-content">
-                                                    <span class="message-date">16 Sept</span>
-                                                    <h2>Victor Jara</h2>
-                                                    <p>Please done this project as soon possible.</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="message-img">
-                                                    <img src="Images/message/2.jpg" alt="">
-                                                </div>
-                                                <div class="message-content">
-                                                    <span class="message-date">16 Sept</span>
-                                                    <h2>Victor Jara</h2>
-                                                    <p>Please done this project as soon possible.</p>
-                                                </div>
-                                            </a>
+
                                         </li>
                                     </ul>
                                     <div class="message-view">

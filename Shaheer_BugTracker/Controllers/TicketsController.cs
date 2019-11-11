@@ -125,6 +125,7 @@ namespace Shaheer_BugTracker.Controllers
                 var newTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id == ticket.Id);
 
                 histHelp.RecordHistoricalChanges(oldTicket, newTicket);
+                NotificationHelper.GetUnreadNotifications();
                 return RedirectToAction("Index");
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
