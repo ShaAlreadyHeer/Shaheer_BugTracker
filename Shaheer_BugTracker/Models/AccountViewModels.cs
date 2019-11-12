@@ -77,6 +77,10 @@ namespace Shaheer_BugTracker.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        
+        [Required]
+        [Display(Name = "DisplayName")]
+        public string DisplayName { get; set; }
 
         [Required]
         [EmailAddress]

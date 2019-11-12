@@ -18,6 +18,9 @@ namespace Shaheer_BugTracker.Models
         public string LastName { get; set; }
         [Display(Name = "DisplayName")]
         public string DisplayName { get; set; }
+        
+        public string AvatarPath { get; set; }
+
 
         //Children
         public virtual ICollection<TicketComment> TicketComments { get; set; }

@@ -185,6 +185,7 @@
     <Compile Include="Helpers\AttachmentUploadValidator.cs" />
     <Compile Include="Helpers\HelperClass.cs" />
     <Compile Include="Helpers\NotificationHelper.cs" />
+    <Compile Include="Helpers\StringUtilities.cs" />
     <Compile Include="Helpers\TicketHistoryHelper.cs" />
     <Compile Include="Helpers\UserRolesHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Avatars\default_user.png" />
     <Content Include="Content\adminpro-custon-icon.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-editable.css" />

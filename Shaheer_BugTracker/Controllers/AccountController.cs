@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Shaheer_BugTracker.Helpers;
 using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
@@ -94,18 +96,33 @@ namespace Shaheer_BugTracker.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(LoginRegisterViewModel model)
+        public async Task<ActionResult> Register(LoginRegisterViewModel model, HttpPostedFileBase avatar)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = model.RegisterVM.Email,
+                    UserName = model.RegisterVM.DisplayName,
                     DisplayName = model.RegisterVM.Email,
                     Email = model.RegisterVM.Email,
                     FirstName = model.RegisterVM.FirstName,
-                    LastName = model.RegisterVM.LastName
+                    LastName = model.RegisterVM.LastName,
+                    AvatarPath = "/Avatars/default_user.png"
                 };
+
+                if (avatar != null)
+                {
+                    if(AttachmentUploadValidator.IsWebFriendlyImage(avatar))
+                    {
+                        var fileName = Path.GetFileName(avatar.FileName);
+                        var justFileName = Path.GetFileNameWithoutExtension(fileName);
+                        justFileName = StringUtilities.URLFriendly(justFileName);
+                        fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
+                        avatar.SaveAs(Path.Combine(Server.MapPath("~/Avatars/"), fileName));
+                        user.AvatarPath = "/Avatars/" + fileName;
+                    }
+                }
+
                 var result = await UserManager.CreateAsync(user, model.RegisterVM.Password);
                 if(result.Succeeded)
                 {
@@ -387,12 +404,12 @@ namespace Shaheer_BugTracker.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CustomLogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

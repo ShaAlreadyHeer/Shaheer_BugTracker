@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
 
-                                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "Multipath/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
                                 <div class="row">
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="login-input-area">
-                                            @Html.TextBoxFor(m => m.RegisterVM.Email, new { @class = "form-control", placeholder = "Email" })
+                                            @Html.TextBoxFor(m => m.RegisterVM.DisplayName, new { @class = "form-control", placeholder = "Username" })
                                             <i class="fa fa-user login-user"></i>
                                         </div>
                                     </div>
@@ -135,6 +135,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="login-input-area">
+                                            @Html.TextBox("Avatar", null, new {type="file"})
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-4"></div>
                                     <div class="col-lg-8">
                                         <div class="login-keep-me register-check">
@@ -159,7 +166,6 @@
                                     <div class="col-lg-8">
                                         <div class="login-button-pro">
                                             <button type="submit" value="Register" class="btn btn-success">Register</button>
-                                            @*<button type="submit" class="login-button login-button-lg">Register</button>*@
                                         </div>
                                     </div>
                                 </div>
