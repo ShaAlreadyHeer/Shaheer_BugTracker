@@ -24,7 +24,8 @@ namespace Shaheer_BugTracker.Helpers
             var result = userManager.AddToRole(userId, roleName);
             return result.Succeeded; 
         }
-        public bool RemoveUserFromRole(string userId, string roleName) { 
+        public bool RemoveUserFromRole(string userId, string roleName) 
+        { 
             var result = userManager.RemoveFromRole(userId, roleName);
             return result.Succeeded; 
         }

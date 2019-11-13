@@ -190,6 +190,7 @@
     <Compile Include="Helpers\UserRolesHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DashboardView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Project.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\c3.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\form.css" />
     <Content Include="Content\jquery-jvectormap-2.0.3.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
@@ -406,6 +408,7 @@
     <Content Include="Views\Admin\ManageProjectUsers.cshtml" />
     <Content Include="private.config" />
     <Content Include="Views\Tickets\AssignTicket.cshtml" />
+    <Content Include="Views\DashboardView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

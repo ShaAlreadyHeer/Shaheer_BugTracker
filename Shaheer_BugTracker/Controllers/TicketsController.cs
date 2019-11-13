@@ -58,6 +58,7 @@ namespace Shaheer_BugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket, HttpPostedFileBase image, TicketAttachment ticketAttachment)
         {
             if (ModelState.IsValid)
@@ -68,7 +69,7 @@ namespace Shaheer_BugTracker.Controllers
                     image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), filename));
                     ticketAttachment.FilePath = "/Uploads/" + filename;
                 }
-
+                ticket.OwnerUserId = User.Identity.GetUserId();
                 ticket.Created = DateTime.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();

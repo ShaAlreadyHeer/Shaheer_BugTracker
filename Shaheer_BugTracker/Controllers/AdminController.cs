@@ -39,7 +39,7 @@ namespace Shaheer_BugTracker.Controllers
             foreach (var userId in userIds)
             {
                 var userRole = userRoles.ListUserRoles(userId).FirstOrDefault();
-                if (userRoles != null)
+                if (userRole != null)
                 {
                     userRoles.RemoveUserFromRole(userId, userRole);
                 }
@@ -52,7 +52,7 @@ namespace Shaheer_BugTracker.Controllers
                     userRoles.AddUserToRole(userId, role);
                 }
             }
-            return RedirectToAction("Dashboard", "Home");
+            return RedirectToAction("manageroles", "admin");
         }
 
         [Authorize(Roles = "Admin, Project_Manager")]

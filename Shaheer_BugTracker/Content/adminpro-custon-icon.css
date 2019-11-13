@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'adminpro-icon';
   src:
-    url('fonts/adminpro-icon.ttf?4gzvyg') format('truetype'),
-    url('fonts/adminpro-icon.woff?4gzvyg') format('woff'),
-    url('fonts/adminpro-icon.svg?4gzvyg#adminpro-icon') format('svg');
+    url('Fonts/adminpro-icon.ttf?4gzvyg') format('truetype'),
+    url('Fonts/adminpro-icon.woff?4gzvyg') format('woff'),
+    url('Fonts/adminpro-icon.svg?4gzvyg#adminpro-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }

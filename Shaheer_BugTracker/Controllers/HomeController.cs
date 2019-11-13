@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shaheer_BugTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,12 +7,17 @@ using System.Web.Mvc;
 
 namespace Shaheer_BugTracker.Controllers
 {
-    [Authorize]
+
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            var data = new DashboardView();
+            data.myProjects = db.Projects.ToList();
+            data.myTickets = db.Tickets.ToList();
+            data.myUsers = db.Users.ToList();
+            return View(data);
         }
 
         public ActionResult About()
