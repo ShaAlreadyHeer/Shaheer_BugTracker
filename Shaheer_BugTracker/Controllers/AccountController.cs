@@ -103,7 +103,7 @@ namespace Shaheer_BugTracker.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = model.RegisterVM.DisplayName,
-                    DisplayName = model.RegisterVM.Email,
+                    DisplayName = model.RegisterVM.DisplayName,
                     Email = model.RegisterVM.Email,
                     FirstName = model.RegisterVM.FirstName,
                     LastName = model.RegisterVM.LastName,

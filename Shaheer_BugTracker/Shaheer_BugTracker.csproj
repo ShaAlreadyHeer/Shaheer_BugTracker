@@ -409,6 +409,7 @@
     <Content Include="private.config" />
     <Content Include="Views\Tickets\AssignTicket.cshtml" />
     <Content Include="Views\DashboardView.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

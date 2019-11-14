@@ -1,51 +1,234 @@
 ﻿@model Shaheer_BugTracker.Models.Project
+@using Shaheer_BugTracker.Models
+@using Microsoft.AspNet.Identity
 
 @{
+    //var db = new ApplicationDbContext();
+    ////var projectId = Ticket
+    //var project = db.Projects.Find(projectId);
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Project</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<!doctype html>
+<html class="no-js" lang="en">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Projct Details | Adminpro - Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <!-- adminpro icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/meanmenu.min.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="~/Content/data-table/bootstrap-editable.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/normalize.css">
+    <!-- charts CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/c3.min.css">
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="~/Scripts/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Breadcome start-->
+    <div class="breadcome-area mg-b-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcome-list map-mg-t-40-gl shadow-reset">
+                        <div class="breadcome-heading">
+                            <h2> @Html.DisplayFor(model => model.Name)</h2>
+                        </div>
+                        <ul class="breadcome-menu">
+                            <li>
+                                <a href="#">Home</a> <span class="bread-slash">/</span>
+                            </li>
+                            <li>
+                                <a href="#">Graphs</a> <span class="bread-slash">/</span>
+                            </li>
+                            <li>
+                                <span class="bread-blod">Project Details</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcome End-->
+    <div class="project-details-area mg-b-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="project-details-wrap shadow-reset">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                <div class="project-details-title">
+                                    <h2><span class="profile-details-name-nn"></span></h2>
+                                    @Html.DisplayFor(model => model.Description)
+                                </div>
+                                <ul id="adminpro-demo2" class="comment-action-st collapse">
+                                    <li>
+                                        <a href="#">Delete</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Edit</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    <!-- Footer Start-->
+    <div class="footer-copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright &#169; 2018 Colorlib All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+    <!-- Chat Box Start-->
+    <div class="chat-list-wrap">
+        <div class="chat-list-adminpro">
+            <div class="chat-button">
+                <span data-toggle="collapse" data-target="#chat" class="chat-icon-link"><i class="fa fa-comments"></i></span>
+            </div>
+            <div id="chat" class="collapse chat-box-wrap shadow-reset animated zoomInLeft">
+                <div class="chat-main-list">
+                    <div class="chat-heading">
+                        <h2>Messanger</h2>
+                    </div>
+                    <div class="chat-content chat-scrollbar">
+                        <div class="author-chat">
+                            <h3>Monica <span class="chat-date">10:15 am</span></h3>
+                            <p>Hi, what you are doing and where are you gay?</p>
+                        </div>
+                        <div class="client-chat">
+                            <h3>Mamun <span class="chat-date">10:10 am</span></h3>
+                            <p>Now working in graphic design with coding and you?</p>
+                        </div>
+                        <div class="author-chat">
+                            <h3>Monica <span class="chat-date">10:05 am</span></h3>
+                            <p>Practice in programming</p>
+                        </div>
+                        <div class="client-chat">
+                            <h3>Mamun <span class="chat-date">10:02 am</span></h3>
+                            <p>That's good man! carry on...</p>
+                        </div>
+                    </div>
+                    <div class="chat-send">
+                        <input type="text" placeholder="Type..." />
+                        <span><button type="submit">Send</button></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chat Box End-->
+    <!-- jquery
+        ============================================ -->
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.meanmenu.js"></script>
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- sticky JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+    <!-- counterup JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.counterup.min.js"></script>
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <!-- peity JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.peity.min.js"></script>
+    <script src="~/Scripts/peity-active.js"></script>
+    <!-- rounded-counter JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.countdown.min.js"></script>
+    <script src="~/Scripts/jquery.knob.js"></script>
+    <script src="~/Scripts/jquery.appear.js"></script>
+    <script src="~/Scripts/knob-active.js"></script>
+    <!-- sparkline JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/sparkline-active.js"></script>
+    <!-- map JS
+        ============================================ -->
+    <script src="~/Scripts/raphael.min.js"></script>
+    <script src="~/Scripts/jquery.mapael.js"></script>
+    <script src="~/Scripts/france_departments.js"></script>
+    <script src="~/Scripts/world_countries.js"></script>
+    <script src="~/Scripts/usa_states.js"></script>
+    <script src="~/Scripts/map-active.js"></script>
+    <!-- data table JS
+        ============================================ -->
+    <script src="~/Scripts/bootstrap-table.js"></script>
+    <script src="~/Scripts/tableExport.js"></script>
+    <script src="~/Scripts/data-table-active.js"></script>
+    <script src="~/Scripts/bootstrap-table-editable.js"></script>
+    <script src="~/Scripts/bootstrap-editable.js"></script>
+    <script src="~/Scripts/bootstrap-table-resizable.js"></script>
+    <script src="~/Scripts/colResizable-1.5.source.js"></script>
+    <script src="~/Scripts/bootstrap-table-export.js"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="~/Scripts/main.js"></script>
+</body>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedDate)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</html>
