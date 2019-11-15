@@ -96,7 +96,7 @@ namespace Shaheer_BugTracker.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(LoginRegisterViewModel model, HttpPostedFileBase avatar)
+        public async Task<ActionResult> Register(LoginRegisterViewModel model, HttpPostedFileBase avatarPath)
         {
             if (ModelState.IsValid)
             {
@@ -107,18 +107,18 @@ namespace Shaheer_BugTracker.Controllers
                     Email = model.RegisterVM.Email,
                     FirstName = model.RegisterVM.FirstName,
                     LastName = model.RegisterVM.LastName,
-                    AvatarPath = "/Avatars/default_user.png"
+                    AvatarPath = model.RegisterVM.AvatarPath,
                 };
 
-                if (avatar != null)
+                if (avatarPath != null)
                 {
-                    if(AttachmentUploadValidator.IsWebFriendlyImage(avatar))
+                    if(AttachmentUploadValidator.IsWebFriendlyImage(avatarPath))
                     {
-                        var fileName = Path.GetFileName(avatar.FileName);
+                        var fileName = Path.GetFileName(avatarPath.FileName);
                         var justFileName = Path.GetFileNameWithoutExtension(fileName);
                         justFileName = StringUtilities.URLFriendly(justFileName);
                         fileName = $"{justFileName}_{DateTime.Now.Ticks}{Path.GetExtension(fileName)}";
-                        avatar.SaveAs(Path.Combine(Server.MapPath("~/Avatars/"), fileName));
+                        avatarPath.SaveAs(Path.Combine(Server.MapPath("~/Avatars/"), fileName));
                         user.AvatarPath = "/Avatars/" + fileName;
                     }
                 }

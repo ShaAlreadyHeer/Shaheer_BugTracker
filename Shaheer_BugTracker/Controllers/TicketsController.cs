@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Shaheer_BugTracker.Helpers;
 using Shaheer_BugTracker.Models;
+using static Shaheer_BugTracker.Helpers.HelperClass;
 
 namespace Shaheer_BugTracker.Controllers
 {
@@ -18,13 +19,19 @@ namespace Shaheer_BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private TicketHistoryHelper histHelp = new TicketHistoryHelper();
+        private UserRolesHelper userRoles = new UserRolesHelper();
+        private UserProjectsHelper userProjectsHelper = new UserProjectsHelper();
 
         // GET: Tickets
         public ActionResult Index()
         {
-            var tickets = db.Tickets;
+            var dashboardView = new DashboardView();
+            var user = db.Users.Find(User.Identity.GetUserId());
+            dashboardView.myTickets = db.Tickets.ToList();
+            return View(dashboardView);
+
             //var tickets = db.Tickets.Include(t => t.AssignedToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
-            return View(tickets.ToList());
+            //return View(tickets.ToList());
         }
 
         // GET: Tickets/Details/5

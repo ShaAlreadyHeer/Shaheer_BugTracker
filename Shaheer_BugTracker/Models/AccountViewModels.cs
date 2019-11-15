@@ -97,6 +97,10 @@ namespace Shaheer_BugTracker.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Avatar")]
+        public string AvatarPath { get; set; }
     }
 
     public class ResetPasswordViewModel

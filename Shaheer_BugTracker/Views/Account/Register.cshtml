@@ -137,7 +137,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="login-input-area">
-                                            @Html.TextBox("Avatar", null, new {type="file"})
+                                            @Html.TextBoxFor(m => m.RegisterVM.AvatarPath, new { @class = "form-control", @type = "file" })
                                         </div>
                                     </div>
                                 </div>
@@ -147,16 +147,6 @@
                                         <div class="login-keep-me register-check">
                                             <label class="checkbox">
                                                 <input type="checkbox" name="remember" checked><i></i>Send a copy to my e-mail address
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4"></div>
-                                    <div class="col-lg-8">
-                                        <div class="login-keep-me register-check">
-                                            <label class="checkbox">
-                                                <input type="checkbox" name="remember" checked><i></i>I want to receive news and special offers
                                             </label>
                                         </div>
                                     </div>

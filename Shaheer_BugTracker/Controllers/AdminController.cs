@@ -58,7 +58,7 @@ namespace Shaheer_BugTracker.Controllers
         [Authorize(Roles = "Admin, Project_Manager")]
         public ActionResult ManageProjectUsers()
         {
-            ViewBag.Projects = new MultiSelectList(db.Projects, "Id", "Name");
+            ViewBag.Projects = new MultiSelectList(db.Projects, "Id", "ProjectName");
             ViewBag.Developers = new MultiSelectList(userRoles.UsersInRole("Developer"), "Id", "Email").ToList();
             ViewBag.Submitters = new MultiSelectList(userRoles.UsersInRole("Submitter"), "Id", "Email").ToList();
             ViewBag.VBUsers = new SelectList(db.Users, "Id", "Email");

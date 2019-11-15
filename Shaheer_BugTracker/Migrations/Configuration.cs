@@ -50,6 +50,7 @@ namespace Shaheer_BugTracker.Migrations
                     FirstName = "Shaheer",
                     LastName = "Ahmed",
                     DisplayName = "ShaAlreadyHeer",
+                    AvatarPath = "~/Avatars/default_user.png",
                 }, "Abc&123!");
             }
             if (!context.Users.Any(u => u.Email == "demoAdmin@mailinator.com"))

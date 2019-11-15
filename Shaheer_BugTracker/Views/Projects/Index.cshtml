@@ -61,6 +61,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Breadcome start-->
+    <br />
     <div class="breadcome-area mg-b-30">
         <div class="container">
             <div class="row">
@@ -111,29 +112,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach(var item in Model.myProjects)
-                                    {
-                                    <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Id)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProjectName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Tickets.Count)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Users.Count)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                                    </td>
-                                    </tr>
-                                    }
+                                        @foreach (var item in Model.myProjects)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.ProjectName)</a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Tickets.Count)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Users.Count)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
