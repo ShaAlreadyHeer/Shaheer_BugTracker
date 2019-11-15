@@ -62,7 +62,7 @@ namespace Shaheer_BugTracker.Migrations
                     FirstName = "Demo",
                     LastName = "Admin",
                     DisplayName = "DemoAdmin",
-                }, "Abc&123!");
+                }, "LearnToCodeNow!");
             }
             if (!context.Users.Any(u => u.Email == "demoPM@mailinator.com"))
             {
@@ -73,7 +73,7 @@ namespace Shaheer_BugTracker.Migrations
                     FirstName = "Demo",
                     LastName = "ProjectManager",
                     DisplayName = "DemoPM",
-                }, "Abc&123!");
+                }, "LearnToCodeNow!!");
             }
             if (!context.Users.Any(u => u.Email == "demoDeveloper@mailinator.com"))
             {
@@ -84,7 +84,7 @@ namespace Shaheer_BugTracker.Migrations
                     FirstName = "Demo",
                     LastName = "Developer",
                     DisplayName = "DemoDeveloper",
-                }, "Abc&123!");
+                }, "LearnToCodeNow!");
             }
             if (!context.Users.Any(u => u.Email == "demoSubmitter@mailinator.com"))
             {
@@ -95,7 +95,7 @@ namespace Shaheer_BugTracker.Migrations
                     FirstName = "Demo",
                     LastName = "Submitter",
                     DisplayName = "DemoSubmitter",
-                }, "Abc&123!");
+                }, "LearnToCodeNow!");
             }
             #endregion
 

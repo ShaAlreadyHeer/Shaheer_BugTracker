@@ -1,0 +1,235 @@
+﻿
+@{
+    ViewBag.Title = "DemoUser";
+    Layout = null;
+}
+
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Bug Tracker!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon
+        ============================================ -->
+        <link rel="shortcut icon" type="image/x-icon" href="~/Content/favicon.ico">
+        <!-- Google Fonts
+        ============================================ -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+        <!-- Bootstrap CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+        <!-- Bootstrap CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+        <!-- adminpro icon CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
+        <!-- meanmenu icon CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/meanmenu.min.css">
+        <!-- mCustomScrollbar CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
+        <!-- animate CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/animate.css">
+        <!-- jvectormap CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/jquery-jvectormap-2.0.3.css">
+        <!-- normalize CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/bootstrap-table.css">
+        <link rel="stylesheet" href="~/Content/bootstrap-editable.css">
+        <!-- normalize CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/normalize.css">
+
+        <link href="~/Content/form.css" rel="stylesheet" />
+        <!-- charts CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/c3.min.css">
+        <!-- style CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/style.css">
+        <!-- responsive CSS
+        ============================================ -->
+        <link rel="stylesheet" href="~/Content/responsive.css">
+        <!-- modernizr JS
+        ============================================ -->
+        <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
+
+        <!-- Data Tables CSS
+        ============================================ -->
+        <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+    </head>
+
+
+<!-- Header top area start-->
+<div class="header-top-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="admin-logo">
+                    <a href="#">
+                        <img src="~/Images/logo.png" alt="" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-0 col-xs-12">
+                <div class="header-top-menu">
+                    <ul class="nav navbar-nav mai-top-nav">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item dropdown">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-9 col-sm-6 col-xs-12">
+                <div class="header-right-info">
+                <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header top area end-->
+
+<section>
+    <!-- Breadcome start-->
+    <div class="breadcome-area mg-t-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcome-list shadow-reset">
+                        <div class="breadcome-heading text-center">
+                            <h1>Demo Login</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcome End-->
+    <!-- login Start-->
+    <div class="row">
+        <div class="login-form-area mg-t-30 mg-b-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey","DemoAdminEmail")
+
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-heading-icon bg-primary mt-sm">
+                                       <i class="fa fa-bitbucket">Admin</i> 
+                                    </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                </div>
+                            </section>
+                        }
+                    </div>
+                    <div class="col-lg-3">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoPMEmail")
+
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-heading-icon bg-primary mt-sm">
+                                        <i class="fa fa-bitbucket">Project Manager</i>
+                                    </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                </div>
+                            </section>
+                        }
+                    </div>
+                    <div class="col-lg-3">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoDeveloperEmail")
+
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-heading-icon bg-primary mt-sm">
+                                        <i class="fa fa-bitbucket">Developer</i>
+                                    </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                </div>
+                            </section>
+                        }
+                    </div>
+                    <div class="col-lg-3">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoSubmitterEmail")
+
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <div class="panel-heading-icon bg-primary mt-sm">
+                                        <i class="fa fa-bitbucket">Submitter</i>
+                                    </div>
+                                </header>
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                </div>
+                            </section>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- login End-->
+    <!-- Footer Start-->
+    <div class="footer-copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright &#169; 2018 Colorlib All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.meanmenu.js"></script>
+    <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Scripts/jquery.sticky.js"></script>
+    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/form-active.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

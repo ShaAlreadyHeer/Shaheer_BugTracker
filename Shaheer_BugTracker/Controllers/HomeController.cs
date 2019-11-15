@@ -32,6 +32,12 @@ namespace Shaheer_BugTracker.Controllers
         }
 
 
+        public ActionResult DemoUser()
+        {
+            ViewBag.Message = "Test";
+            return View();
+        }
+
 
         // GET: 
         [AllowAnonymous]
