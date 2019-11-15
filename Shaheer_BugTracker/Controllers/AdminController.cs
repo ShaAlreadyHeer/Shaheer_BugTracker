@@ -76,7 +76,7 @@ namespace Shaheer_BugTracker.Controllers
                 userVm = new UserProjectListViewModel
                 {
                     Name = $"{user.LastName},{user.FirstName}",
-                    ProjectNames = helperRoles.ListUserProjects(user.Id).Select(p => p.Name).ToList()
+                    ProjectNames = helperRoles.ListUserProjects(user.Id).Select(p => p.ProjectName).ToList()
                 };
 
                 if (userVm.ProjectNames.Count() == 0)

@@ -35,7 +35,7 @@ namespace Shaheer_BugTracker.Helpers
                 TicketId = newTicket.Id,
                 IsRead = false,
                 RecipientId = newTicket.AssignedToUserId,
-                NotificationBody = $"You have been assigned to a ticket Id {newTicket.Id} on project {newTicket.Project.Name}. The ticket title is {newTicket.Title}."
+                NotificationBody = $"You have been assigned to a ticket Id {newTicket.Id} on project {newTicket.Project.ProjectName}. The ticket title is {newTicket.Title}."
             };
             db.TicketNotifications.Add(notification);
             db.SaveChanges();
@@ -48,7 +48,7 @@ namespace Shaheer_BugTracker.Helpers
                 TicketId = newTicket.Id,
                 IsRead = false,
                 RecipientId = newTicket.AssignedToUserId,
-                NotificationBody = $"You have been assigned to a ticket Id {newTicket.Id} on project {newTicket.Project.Name}. The ticket title is {newTicket.Title}."
+                NotificationBody = $"You have been assigned to a ticket Id {newTicket.Id} on project {newTicket.Project.ProjectName}. The ticket title is {newTicket.Title}."
             };
             db.TicketNotifications.Remove(notification);
             db.SaveChanges();

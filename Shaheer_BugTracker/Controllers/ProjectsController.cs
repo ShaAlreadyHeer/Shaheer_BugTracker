@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Shaheer_BugTracker.Models;
 using Shaheer_BugTracker.Helpers;
 using static Shaheer_BugTracker.Helpers.HelperClass;
+using Microsoft.AspNet.Identity;
 
 namespace Shaheer_BugTracker.Controllers
 {
@@ -44,7 +45,23 @@ namespace Shaheer_BugTracker.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            var dashboardView = new DashboardView();
+            var user = db.Users.Find(User.Identity.GetUserId());
+            dashboardView.myProjects = db.Projects.ToList();
+            if (userRoles.ListUserRoles(user.Id).FirstOrDefault() == "Developer")
+            {
+                dashboardView.myProjects = userProjectsHelper.ListProjectsForUser(user.Id);
+            }
+            if (userRoles.ListUserRoles(user.Id).FirstOrDefault() == "Project_Manager")
+            {
+                dashboardView.myProjects = userProjectsHelper.ListProjectsForUser(user.Id);
+            }
+            if (userRoles.ListUserRoles(user.Id).FirstOrDefault() == "Submitter")
+            {
+                dashboardView.myProjects = userProjectsHelper.ListProjectsForUser(user.Id);
+            }
+            
+            return View(dashboardView);
         }
 
         // GET: Projects/Details/5
@@ -75,7 +92,7 @@ namespace Shaheer_BugTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,Name,Description")] Project project)
+        public ActionResult Create([Bind(Include = "Id, ProjectName, Description")] Project project)
         {
             if (ModelState.IsValid)
             {

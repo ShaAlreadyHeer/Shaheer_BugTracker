@@ -1,5 +1,6 @@
 ﻿@model Shaheer_BugTracker.Models.DashboardView
 
+
 <!-- income order visit user Start -->
 <div class="income-order-visit-user-area mg-t-40">
     <div class="container">
@@ -17,19 +18,14 @@
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-adminpro-rate">
-
-                               <h3><span>$</span><span class="counter"> @Model.myTickets.Where(t=>t.TicketStatus.StatusName == "Open").Count()</span></h3>
-
-                                
-
-
+                               <h3><span></span><span class="counter"> @Model.myTickets.Where(t=>t.TicketStatus.StatusName == "Open").Count()</span></h3>
                             </div>
                             <div class="price-graph">
                                 <span id="sparkline1"></span>
                             </div>
                         </div>
                         <div class="income-range">
-                            <p>Total income</p>
+                            <p>Total open tickets</p>
                             <span class="income-percentange">98% <i class="fa fa-bolt"></i></span>
                         </div>
                         <div class="clear"></div>
@@ -40,16 +36,16 @@
                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                     <div class="income-title">
                         <div class="main-income-head">
-                            <h2>Orders</h2>
+                            <h2>Projects</h2>
                             <div class="main-income-phara order-cl">
-                                <p>Annual</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-adminpro-rate">
-                                <h3><span class="counter">72320</span></h3>
+                                <h3><span class="counter">@Model.myProjects.Count()</span></h3>
                             </div>
                             <div class="price-graph">
                                 <span id="sparkline6"></span>
@@ -67,23 +63,23 @@
                 <div class="income-dashone-total shadow-reset nt-mg-b-30">
                     <div class="income-title">
                         <div class="main-income-head">
-                            <h2>Visitor</h2>
+                            <h2>Users</h2>
                             <div class="main-income-phara visitor-cl">
-                                <p>Today</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
                     <div class="income-dashone-pro">
                         <div class="income-rate-total">
                             <div class="price-adminpro-rate">
-                                <h3><span class="counter">888200</span></h3>
+                                <h3><span class="counter">@Model.myUsers.Count()</span></h3>
                             </div>
                             <div class="price-graph">
                                 <span id="sparkline2"></span>
                             </div>
                         </div>
                         <div class="income-range visitor-cl">
-                            <p>New Visitor</p>
+                            <p># of Users</p>
                             <span class="income-percentange">55% <i class="fa fa-level-up"></i></span>
                         </div>
                         <div class="clear"></div>
@@ -295,194 +291,28 @@
                     </div>
                     <div class="sparkline9-graph dashone-comment">
                         <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
-                            <div id="toolbar1">
-                                <select class="form-control">
-                                    <option value="">Export Basic</option>
-                                    <option value="all">Export All</option>
-                                    <option value="selected">Export Selected</option>
-                                </select>
-                            </div>
                             <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
                                 <thead>
                                     <tr>
-                                        <th data-field="state" data-checkbox="true"></th>
                                         <th data-field="id">ID</th>
-                                        <th data-field="status" data-editable="true">Status</th>
+                                        <th data-field="status" data-editable="true">Name</th>
                                         <th data-field="date" data-editable="true">Date</th>
-                                        <th data-field="phone" data-editable="true">User</th>
-                                        <th data-field="company" data-editable="true">Value</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                @foreach (var project in Model.myProjects)
+                                {
                                     <tr>
-                                        <td></td>
-                                        <td>1</td>
-                                        <td>Pending</td>
-                                        <td>1:20pm</td>
-                                        <td>John</td>
-                                        <td>20%</td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => project.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => project.ProjectName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => project.CreatedDate)
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>2</td>
-                                        <td class="complete-project-dashtwo">Complete</td>
-                                        <td>2:30pm</td>
-                                        <td>khan</td>
-                                        <td>25%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>3</td>
-                                        <td>Complete</td>
-                                        <td>4:50pm</td>
-                                        <td>hok</td>
-                                        <td>50%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>4</td>
-                                        <td class="canceled-project-dashtwo">Canceled</td>
-                                        <td>5:30pm</td>
-                                        <td>dogi</td>
-                                        <td>80%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>5</td>
-                                        <td>Complete</td>
-                                        <td>6:20pm</td>
-                                        <td>joyi</td>
-                                        <td>30%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>6</td>
-                                        <td>Pending</td>
-                                        <td>7:40pm</td>
-                                        <td>joy</td>
-                                        <td>40%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>7</td>
-                                        <td>Complete</td>
-                                        <td>9:40pm</td>
-                                        <td>ulla</td>
-                                        <td>90%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>8</td>
-                                        <td>Pending</td>
-                                        <td>11:20pm</td>
-                                        <td>don</td>
-                                        <td>95%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>9</td>
-                                        <td>Pending</td>
-                                        <td>5:20am</td>
-                                        <td>dali</td>
-                                        <td>85%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>10</td>
-                                        <td>Complete</td>
-                                        <td>6:20am</td>
-                                        <td>poli</td>
-                                        <td>77%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>11</td>
-                                        <td>Pending</td>
-                                        <td>7:30am</td>
-                                        <td>payel</td>
-                                        <td>55%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>12</td>
-                                        <td>Complete</td>
-                                        <td>8:22am</td>
-                                        <td>flat</td>
-                                        <td>36%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>13</td>
-                                        <td>Pending</td>
-                                        <td>9:25am</td>
-                                        <td>alit</td>
-                                        <td>49%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>14</td>
-                                        <td>Complete</td>
-                                        <td>10:30am</td>
-                                        <td>win</td>
-                                        <td>87%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>15</td>
-                                        <td>Pending</td>
-                                        <td>11:11am</td>
-                                        <td>back</td>
-                                        <td>97%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>16</td>
-                                        <td>Canceled</td>
-                                        <td>11:12am</td>
-                                        <td>koy</td>
-                                        <td>58%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>17</td>
-                                        <td>Complete</td>
-                                        <td>11:20pm</td>
-                                        <td>khy</td>
-                                        <td>22%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>18</td>
-                                        <td>Pending</td>
-                                        <td>12:20pm</td>
-                                        <td>fat</td>
-                                        <td>33%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>19</td>
-                                        <td>Pending</td>
-                                        <td>1:20pm</td>
-                                        <td>pof</td>
-                                        <td>65%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>20</td>
-                                        <td>Complete</td>
-                                        <td>11:20pm</td>
-                                        <td>elit</td>
-                                        <td>46%</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>21</td>
-                                        <td>Pending</td>
-                                        <td>5:20pm</td>
-                                        <td>John</td>
-                                        <td>57%</td>
-                                    </tr>
-                                </tbody>
+                                }
                             </table>
                         </div>
                     </div>
