@@ -180,14 +180,11 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Page" class="tab-pane in active tab-custon-menu-bg animated flipInX">
                             <ul class="main-menu-dropdown">
-                                <li>
-                                    <a href=@Url.Action("Login","Account",null)>Login</a>
-                                </li>
-                                <li>
-                                    <a href=@Url.Action("Register", "Account", null)>Register</a>
-                                </li>
                                 @if (Request.IsAuthenticated)
                                 {
+                                    <li>
+                                        <a href=@Url.Action("Index","Home", null)>Home</a>
+                                    </li>
                                     <li>
                                         <a href=@Url.Action("ManageRoles", "Admin" , "Admin")>Manage Roles</a>
                                     </li>
@@ -200,12 +197,17 @@
                                     <li>
                                         <a href=@Url.Action("Manageprojectusers","Admin","Admin")>Project Users</a>
                                     </li>
+                                }
+
+                                @if (!Request.IsAuthenticated)
+                                {
                                     <li>
-                                        <a href="#">Order</a>
+                                        <a href=@Url.Action("Login","Account",null)>Login</a>
                                     </li>
                                     <li>
-                                        <a href="#">Comment</a>
+                                        <a href=@Url.Action("Register", "Account", null)>Register</a>
                                     </li>
+
                                 }
                             </ul>
                         </div>
@@ -223,35 +225,34 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href=@Url.Action("Index","Home", null)>Home</a>
+                                    </li>
+                                    <li>
+                                        <a href=@Url.Action("ManageRoles", "Admin" , "Admin")>Manage Roles</a>
+                                    </li>
+                                    <li>
+                                        <a href=@Url.Action("index","projects","project")>Projects</a>
+                                    </li>
+                                    <li>
+                                        <a href=@Url.Action("index","tickets","ticket")>Tickets</a>
+                                    </li>
+                                    <li>
+                                        <a href=@Url.Action("Manageprojectusers","Admin","Admin")>Project Users</a>
+                                    </li>
+                                }
+                                @if(!Request.IsAuthenticated)
+                                {
                                 <li>
-                                    <li>
-                                        <a href=@Url.Action("Login","Account",null)>Login</a>
-                                    </li>
-                                    <li>
-                                        <a href=@Url.Action("Register", "Account", null)>Register</a>
-                                    </li>
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        <li>
-                                            <a href=@Url.Action("ManageRoles", "Admin" , "Admin")>Manage Roles</a>
-                                        </li>
-                                        <li>
-                                            <a href=@Url.Action("index","projects","project")>Projects</a>
-                                        </li>
-                                        <li>
-                                            <a href=@Url.Action("index","tickets","ticket")>Tickets</a>
-                                        </li>
-                                        <li>
-                                            <a href=@Url.Action("Manageprojectusers","Admin","Admin")>Project Users</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Order</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Comment</a>
-                                        </li>
-                                    }
+                                    <a href=@Url.Action("Login","Account",null)>Login</a>
                                 </li>
+                                <li>
+                                    <a href=@Url.Action("Register", "Account", null)>Register</a>
+                                </li>
+
+                                }
                             </ul>
                         </nav>
                     </div>

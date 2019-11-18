@@ -14,6 +14,9 @@ namespace Shaheer_BugTracker.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private HelperClass helperRoles = new HelperClass();
         private UserRolesHelper userRoles = new UserRolesHelper();
+
+
+        [Authorize(Roles = "Admin, Project_Manager")]
         //GET: Admin
         public ActionResult ManageRoles()
         {
@@ -31,6 +34,7 @@ namespace Shaheer_BugTracker.Controllers
             }
             return View(users);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

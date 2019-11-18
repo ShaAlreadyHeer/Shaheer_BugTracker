@@ -38,6 +38,11 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
 
         // GET: 
         [AllowAnonymous]

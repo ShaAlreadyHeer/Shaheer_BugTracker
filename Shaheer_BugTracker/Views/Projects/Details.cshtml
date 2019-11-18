@@ -3,9 +3,6 @@
 @using Microsoft.AspNet.Identity
 
 @{
-    //var db = new ApplicationDbContext();
-    ////var projectId = Ticket
-    //var project = db.Projects.Find(projectId);
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -22,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
         ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico">
     <!-- Google Fonts
         ============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
@@ -105,14 +102,14 @@
                                 <div class="project-details-title">
                                     <h2><span class="profile-details-name-nn"></span></h2>
                                     @Html.DisplayFor(model => model.Description)
+                                    <br />
+                                    @foreach(var Id = Model.Id)
+                                    {
+                                        @Html.ActionLink("Edit", "Edit", new { model = Model.Id })
+                                        @Html.ActionLink("Delete", "Delete", new { model = Model.Id })
+                                    }
                                 </div>
                                 <ul id="adminpro-demo2" class="comment-action-st collapse">
-                                    <li>
-                                        <a href="#">Delete</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Edit</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
         ============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/favicon.ico">
     <!-- Google Fonts
         ============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
@@ -96,6 +96,10 @@
                         <div class="sparkline8-hd">
                             <div class="main-sparkline8-hd">
                                 <h1>Project List</h1>
+                                <br />
+                                <p>
+                                    @Html.ActionLink("Create New", "Create")
+                                </p>
                             </div>
                         </div>
                         <div class="sparkline8-graph">
@@ -116,22 +120,22 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Id)
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.Id)</a>
                                                 </td>
                                                 <td>
                                                     <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.ProjectName)</a>
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Description)
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.Description)</a>
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Tickets.Count)
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.Tickets.Count)</a>
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Users.Count)
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.Users.Count)</a>
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                                                    <a href="@Url.Action("Details", "Projects", new {id = item.Id} )">@Html.DisplayFor(modelItem => item.CreatedDate)</a>
                                                 </td>
                                             </tr>
                                         }
@@ -157,57 +161,7 @@
         </div>
     </div>
     <!-- Footer End-->
-    <!-- jquery
-        ============================================ -->
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <!-- bootstrap JS
-        ============================================ -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- meanmenu JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.meanmenu.js"></script>
-    <!-- mCustomScrollbar JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sticky JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
-    <!-- counterup JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.counterup.min.js"></script>
-    <script src="~/Scripts/waypoints.min.js"></script>
-    <!-- peity JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.peity.min.js"></script>
-    <script src="~/Scripts/peity-active.js"></script>
-    <!-- sparkline JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.sparkline.min.js"></script>
-    <script src="~/Scripts/sparkline-active.js"></script>
-    <!-- map JS
-        ============================================ -->
-    <script src="~/Scripts/raphael.min.js"></script>
-    <script src="~/Scripts/jquery.mapael.js"></script>
-    <script src="~/Scripts/france_departments.js"></script>
-    <script src="~/Scripts/world_countries.js"></script>
-    <script src="~/Scripts/usa_states.js"></script>
-    <script src="~/Scripts/map-active.js"></script>
-    <!-- data table JS
-        ============================================ -->
-    <script src="~/Scripts/bootstrap-table.js"></script>
-    <script src="~/Scripts/tableExport.js"></script>
-    <script src="~/Scripts/data-table-active.js"></script>
-    <script src="~/Scripts/bootstrap-table-editable.js"></script>
-    <script src="~/Scripts/bootstrap-editable.js"></script>
-    <script src="~/Scripts/bootstrap-table-resizable.js"></script>
-    <script src="~/Scripts/colResizable-1.5.source.js"></script>
-    <script src="~/Scripts/bootstrap-table-export.js"></script>
-    <!-- main JS
-        ============================================ -->
-    <script src="~/Scripts/main.js"></script>
+
 </body>
 
 </html>

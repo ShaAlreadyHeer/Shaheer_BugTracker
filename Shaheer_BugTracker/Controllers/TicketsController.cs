@@ -83,7 +83,9 @@ namespace Shaheer_BugTracker.Controllers
                 ticket.Created = DateTime.Now;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Ticket");
+                //return RedirectToRoute("Details", "Ticket");
+                //return  RedirectToAction("Index");
             }
 
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);

@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GraphingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Models\DashboardView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MorrisBarData.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectUser.cs" />
     <Compile Include="Models\Ticket.cs" />
@@ -377,6 +379,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Graphing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\cropper\Thumbs.db" />
@@ -411,6 +414,8 @@
     <Content Include="Views\DashboardView.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\DemoUser.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <None Include="Properties\PublishProfiles\ShaheerBugTracker - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
