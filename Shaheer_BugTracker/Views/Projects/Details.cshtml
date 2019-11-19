@@ -3,6 +3,7 @@
 @using Microsoft.AspNet.Identity
 
 @{
+    var dashBoard = new DashboardView();
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -103,7 +104,11 @@
                                     <h2><span class="profile-details-name-nn"></span></h2>
                                     @Html.DisplayFor(model => model.Description)
                                     <br />
-                                    @foreach(var Id = Model.Id)
+                                    <p>
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                                        @Html.ActionLink("Back to List", "Index")
+                                    </p>
+                                    @foreach (var Id in dashBoard.myProjects)
                                     {
                                         @Html.ActionLink("Edit", "Edit", new { model = Model.Id })
                                         @Html.ActionLink("Delete", "Delete", new { model = Model.Id })
@@ -170,63 +175,6 @@
         </div>
     </div>
     <!-- Chat Box End-->
-    <!-- jquery
-        ============================================ -->
-    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
-    <!-- bootstrap JS
-        ============================================ -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- meanmenu JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.meanmenu.js"></script>
-    <!-- mCustomScrollbar JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sticky JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
-    <!-- counterup JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.counterup.min.js"></script>
-    <script src="~/Scripts/waypoints.min.js"></script>
-    <!-- peity JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.peity.min.js"></script>
-    <script src="~/Scripts/peity-active.js"></script>
-    <!-- rounded-counter JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.countdown.min.js"></script>
-    <script src="~/Scripts/jquery.knob.js"></script>
-    <script src="~/Scripts/jquery.appear.js"></script>
-    <script src="~/Scripts/knob-active.js"></script>
-    <!-- sparkline JS
-        ============================================ -->
-    <script src="~/Scripts/jquery.sparkline.min.js"></script>
-    <script src="~/Scripts/sparkline-active.js"></script>
-    <!-- map JS
-        ============================================ -->
-    <script src="~/Scripts/raphael.min.js"></script>
-    <script src="~/Scripts/jquery.mapael.js"></script>
-    <script src="~/Scripts/france_departments.js"></script>
-    <script src="~/Scripts/world_countries.js"></script>
-    <script src="~/Scripts/usa_states.js"></script>
-    <script src="~/Scripts/map-active.js"></script>
-    <!-- data table JS
-        ============================================ -->
-    <script src="~/Scripts/bootstrap-table.js"></script>
-    <script src="~/Scripts/tableExport.js"></script>
-    <script src="~/Scripts/data-table-active.js"></script>
-    <script src="~/Scripts/bootstrap-table-editable.js"></script>
-    <script src="~/Scripts/bootstrap-editable.js"></script>
-    <script src="~/Scripts/bootstrap-table-resizable.js"></script>
-    <script src="~/Scripts/colResizable-1.5.source.js"></script>
-    <script src="~/Scripts/bootstrap-table-export.js"></script>
-    <!-- main JS
-        ============================================ -->
-    <script src="~/Scripts/main.js"></script>
 </body>
 
 </html>

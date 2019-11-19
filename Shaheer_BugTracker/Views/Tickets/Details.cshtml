@@ -123,9 +123,9 @@
     @foreach (var comment in Model.TicketComments)
     {
         <div class="container mt-3">
-            <h3>@comment.User</h3>
+            <h3>@comment.User.DisplayName</h3>
             <div class="media">
-                <img src="~/Images/" class="align-self-start mr-3" style="width:60px" />
+                <img src="@comment.User.AvatarPath" style="width:100px" />
                 <div class="media-body">
                     <h4>Written: @comment.Created.ToString("MMM dd, yyyy")</h4>
                     <p>@comment.Comment</p>

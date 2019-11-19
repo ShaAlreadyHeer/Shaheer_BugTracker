@@ -23,26 +23,20 @@ namespace Shaheer_BugTracker.Controllers
             data.myUsers = db.Users.ToList();
             return View(data);
         }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
-
         public ActionResult DemoUser()
         {
-            ViewBag.Message = "Test";
             return View();
         }
-
         public ActionResult Dashboard()
         {
             return View();
         }
-
 
         // GET: 
         [AllowAnonymous]

@@ -7,14 +7,12 @@
 
 <h2>Edit</h2>
 
-@*@if(User.IsInRole("Admin, Project_Manager"))
+@*@if (User.IsInRole("Admin") || User.IsInRole("Project_Manager"))
 {*@
-
-
-@using (Html.BeginForm())
-{
+    @using (Html.BeginForm())
+    {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ticket</h4>
         <hr />
@@ -65,7 +63,8 @@
             </div>
         </div>
     </div>
-}
+    }
+@*}*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
