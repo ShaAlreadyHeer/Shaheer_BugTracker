@@ -92,16 +92,16 @@ namespace Shaheer_BugTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id, ProjectName, Description")] Project project)
+        public ActionResult Create([Bind(Include = "Id, ProjectName, Description, CreatorId")] Project project)
         {
             if (ModelState.IsValid)
             {
+                project.CreatorId = User.Identity.GetUserId();
                 project.CreatedDate = DateTime.Now;
                 db.Projects.Add(project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(project);
         }
 
@@ -137,6 +137,7 @@ namespace Shaheer_BugTracker.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

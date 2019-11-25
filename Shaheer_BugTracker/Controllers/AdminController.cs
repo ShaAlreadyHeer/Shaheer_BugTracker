@@ -38,6 +38,7 @@ namespace Shaheer_BugTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Project_Manager")]
         public ActionResult ManageRoles(List<string> userIds, string role)
         {
             foreach (var userId in userIds)

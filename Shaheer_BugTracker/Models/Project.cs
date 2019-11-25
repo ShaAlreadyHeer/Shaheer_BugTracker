@@ -12,7 +12,7 @@ namespace Shaheer_BugTracker.Models
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        //public int CreatedId { get; set; }
+        public string CreatorId { get; set; }
         //public ApplicationUser Creator { get; set; }
 
 

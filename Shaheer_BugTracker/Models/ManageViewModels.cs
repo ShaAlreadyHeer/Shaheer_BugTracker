@@ -92,4 +92,5 @@ namespace Shaheer_BugTracker.Models
         public string Email { get; set; }
         public string Avatar { get; set; }
     }
+
 }

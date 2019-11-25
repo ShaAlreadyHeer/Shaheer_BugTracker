@@ -39,6 +39,7 @@ namespace Shaheer_BugTracker.Controllers
         }
 
         // GET: 
+        [Authorize(Roles = "Admin,Project_Manager,Developer,Submitter")]
         [AllowAnonymous]
         public ActionResult EditProfile()
         {

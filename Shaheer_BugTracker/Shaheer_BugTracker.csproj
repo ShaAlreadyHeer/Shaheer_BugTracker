@@ -259,6 +259,7 @@
     <Content Include="Scripts\bootstrap-table-resizable.js" />
     <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\charts-morris.js" />
     <Content Include="Scripts\colResizable-1.5.source.js" />
     <Content Include="Scripts\counterup-active.js" />
     <Content Include="Scripts\dashtwo-flot-active.js" />
@@ -290,6 +291,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.min.js" />
     <Content Include="Scripts\peity-active.js" />
+    <Content Include="Scripts\raphael.min.js" />
     <Content Include="Scripts\sparkline-active.js" />
     <Content Include="Scripts\tableExport.js" />
     <Content Include="Scripts\waypoints.min.js" />
@@ -416,6 +418,8 @@
     <Content Include="Views\Home\DemoUser.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Properties\PublishProfiles\ShaheerBugTracker - Web Deploy.pubxml" />
+    <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

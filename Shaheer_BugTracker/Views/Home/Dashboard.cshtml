@@ -1,4 +1,7 @@
-﻿<div class="row">
+﻿<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
+
+<div class="row">
     <div class="col-md-6">
         <div id="demoChart1"></div>
     </div>
@@ -15,13 +18,18 @@
     </div>
 </div>
 
+
+
 @section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script>
         $(function () {
             var url = '@Url.Action("ProduceChart1Data","Graphing")';
             $.post(url).then(function (response) {
                 new Morris.Bar({
-                    element: 'barChart1',
+                    element: 'demoChart1',
                     data: response,
                     xkey: 'label',
                     ykeys: ['value'],
@@ -33,7 +41,7 @@
             var url = '@Url.Action("ProduceChart2Data","Graphing")';
             $.post(url).then(function (response) {
                 new Morris.Donut({
-                    element: 'barChart2',
+                    element: 'demoChart2',
                     data: response,
                     xkey: 'label',
                     ykeys: ['value'],
@@ -41,7 +49,7 @@
                     resize: true
                 });
             });
-        }
+        })
     </script>
-    
+
 }
