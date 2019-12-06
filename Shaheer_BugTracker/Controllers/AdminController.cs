@@ -94,40 +94,40 @@ namespace Shaheer_BugTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ManageProjectUsers(List<int> projects, string ProjectManagerId, List<string> developers, List<string> submitters)
-    {
-        //Remove users from selected projects
-        if(projects != null)
         {
-            foreach (var projectId in projects)
+            //Remove users from selected projects
+            if(projects != null)
             {
-                foreach (var user in helperRoles.UsersOnProject(projectId).ToList())
+                foreach (var projectId in projects)
                 {
-                    helperRoles.RemoveUserFromProject(user.Id, projectId);
-                }
-
-                if(!string.IsNullOrEmpty(ProjectManagerId))
-                {
-                    helperRoles.AddUserToProject(ProjectManagerId, projectId);
-                }
-                
-                if(developers != null)
-                {
-                    foreach(var developerId in developers)
+                    foreach (var user in helperRoles.UsersOnProject(projectId).ToList())
                     {
-                        helperRoles.AddUserToProject(developerId, projectId);
+                        helperRoles.RemoveUserFromProject(user.Id, projectId);
                     }
-                }
-                
-                if(submitters != null)
-                {
-                    foreach(var submittedId in submitters)
+
+                    if(!string.IsNullOrEmpty(ProjectManagerId))
                     {
-                        helperRoles.AddUserToProject(submittedId, projectId);
+                        helperRoles.AddUserToProject(ProjectManagerId, projectId);
+                    }
+                
+                    if(developers != null)
+                    {
+                        foreach(var developerId in developers)
+                        {
+                            helperRoles.AddUserToProject(developerId, projectId);
+                        }
+                    }
+                
+                    if(submitters != null)
+                    {
+                        foreach(var submittedId in submitters)
+                        {
+                            helperRoles.AddUserToProject(submittedId, projectId);
+                        }
                     }
                 }
             }
+            return RedirectToAction("ManageProjectUsers");
         }
-        return RedirectToAction("ManageProjectUsers");
-    }
     }
 }
