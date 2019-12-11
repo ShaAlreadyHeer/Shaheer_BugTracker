@@ -11,6 +11,7 @@ using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
 {
+    [Authorize]
     public class TicketCommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

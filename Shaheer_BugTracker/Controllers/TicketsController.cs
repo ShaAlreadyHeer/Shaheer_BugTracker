@@ -15,6 +15,7 @@ using static Shaheer_BugTracker.Helpers.HelperClass;
 
 namespace Shaheer_BugTracker.Controllers
 {
+    [Authorize]
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

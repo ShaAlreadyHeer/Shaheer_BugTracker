@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Shaheer_BugTracker.Models
 {
+    [Authorize]
     public class TicketStatusesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

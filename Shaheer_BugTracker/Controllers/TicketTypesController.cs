@@ -10,6 +10,7 @@ using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
 {
+    [Authorize]
     public class TicketTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

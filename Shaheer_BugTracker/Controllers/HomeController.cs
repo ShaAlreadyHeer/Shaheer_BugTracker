@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Shaheer_BugTracker.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
