@@ -104,7 +104,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="sparkline9-list shadow-reset mg-tb-30">
-                    <div class="sparkline9-hd">
+                    @*<div class="sparkline9-hd">
                         <div class="main-sparkline9-hd">
                             <h1>User project list</h1>
                             <div class="sparkline9-outline-icon">
@@ -116,7 +116,7 @@
                     </div>
                     <div class="sparkline9-graph dashone-comment">
                         <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
-                            <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                            <table id="projectTable" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
                                 <thead>
                                     <tr>
                                         <th data-field="id">ID</th>
@@ -128,17 +128,50 @@
                                 {
                                     <tr>
                                         <td>
-                                            <a href="@Url.Action("Details", "Project", new {id = project.Id} )"> @Html.DisplayFor(modelItem => project.Id)</a>
+                                            <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.Id)</a>
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Details", "Project", new {id = project.Id} )">@Html.DisplayFor(modelItem => project.ProjectName)</a>
+                                            <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.ProjectName)</a>
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Details", "Project", new {id = project.Id} )">@Html.DisplayFor(modelItem => project.CreatedDate)</a>
+                                            <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.CreatedDate)</a>
                                         </td>
                                     </tr>
                                 }
                             </table>
+                        </div>
+                    </div>*@
+                    <div class="sparkline8-graph">
+                        <div class="datatable-dashv1-list custom-datatable-overright ">
+                        <table id="projectTable" class="table table-striped" >
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            @foreach (var project in Model.myProjects)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.Id)</a>
+                                    </td>
+                                    <td>
+                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.ProjectName)</a>
+                                    </td>
+                                    <td>
+                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.CreatedDate)</a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
                         </div>
                     </div>
                 </div>
