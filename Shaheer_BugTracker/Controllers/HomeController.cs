@@ -10,11 +10,12 @@ using System.Web.Mvc;
 
 namespace Shaheer_BugTracker.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         public ActionResult Index()
         {
             var data = new DashboardView();
@@ -23,6 +24,7 @@ namespace Shaheer_BugTracker.Controllers
             data.myUsers = db.Users.ToList();
             return View(data);
         }
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -33,13 +35,13 @@ namespace Shaheer_BugTracker.Controllers
         {
             return View();
         }
+        [Authorize]
         public ActionResult Dashboard()
         {
             return View();
         }
 
         // GET: 
-        [Authorize(Roles = "Admin,Project_Manager,Developer,Submitter")]
         [AllowAnonymous]
         public ActionResult EditProfile()
         {

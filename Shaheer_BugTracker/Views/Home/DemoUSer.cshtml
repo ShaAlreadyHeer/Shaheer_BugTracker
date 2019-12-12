@@ -6,64 +6,64 @@
 
 
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Bug Tracker!</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- favicon
-        ============================================ -->
-        <link rel="shortcut icon" type="image/x-icon" href="~/Content/favicon.ico">
-        <!-- Google Fonts
-        ============================================ -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
-        <!-- Bootstrap CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-        <!-- Bootstrap CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/font-awesome.min.css">
-        <!-- adminpro icon CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
-        <!-- meanmenu icon CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/meanmenu.min.css">
-        <!-- mCustomScrollbar CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
-        <!-- animate CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/animate.css">
-        <!-- jvectormap CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/jquery-jvectormap-2.0.3.css">
-        <!-- normalize CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/bootstrap-table.css">
-        <link rel="stylesheet" href="~/Content/bootstrap-editable.css">
-        <!-- normalize CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/normalize.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bug Tracker!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+    ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/favicon.ico">
+    <!-- Google Fonts
+    ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <!-- adminpro icon CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
+    <!-- meanmenu icon CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/meanmenu.min.css">
+    <!-- mCustomScrollbar CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
+    <!-- animate CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- jvectormap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery-jvectormap-2.0.3.css">
+    <!-- normalize CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap-table.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-editable.css">
+    <!-- normalize CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/normalize.css">
 
-        <link href="~/Content/form.css" rel="stylesheet" />
-        <!-- charts CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/c3.min.css">
-        <!-- style CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/style.css">
-        <!-- responsive CSS
-        ============================================ -->
-        <link rel="stylesheet" href="~/Content/responsive.css">
-        <!-- modernizr JS
-        ============================================ -->
-        <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
+    <link href="~/Content/form.css" rel="stylesheet" />
+    <!-- charts CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/c3.min.css">
+    <!-- style CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!-- responsive CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <!-- modernizr JS
+    ============================================ -->
+    <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
 
-        <!-- Data Tables CSS
-        ============================================ -->
-        <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
-    </head>
+    <!-- Data Tables CSS
+    ============================================ -->
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
 
 
 <!-- Header top area start-->
@@ -73,7 +73,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="admin-logo">
                     <a href="#">
-                        <img src="~/Images/logo.png" alt="" />
+                        <img src="~/Images/log.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="col-lg-4 col-md-9 col-sm-6 col-xs-12">
                 <div class="header-right-info">
-                <br />
+                    <br />
                 </div>
             </div>
         </div>
@@ -128,15 +128,24 @@
                         @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
-                            @Html.Hidden("emailKey","DemoAdminEmail")
+                            @Html.Hidden("emailKey", "DemoAdminEmail")
 
                             <section class="panel">
-                                <header class="panel-heading">
-                                    <div class="panel-heading-icon bg-primary mt-sm">
-                                       <i class="fa fa-bitbucket">Admin</i> 
+                                <header class="panel-heading container-fluid">
+                                    <div class="text-center">
+                                        <img src="~/Avatars/face_co.png" />
+
+                                    </div>
+                                    <div class="panel-heading-icon bg-primary mt-sm text-center">
+                                        Admin
+                                    </div>
+                                    <hr />
+                                    <div class="row container-fluid text-center">
+                                        Ability to create Projects and Tickets and accessing forbidden areas.
+                                        Assign/Unassign users to Roles, Projects, and Tickets
                                     </div>
                                 </header>
-                                <div class="panel-body">
+                                <div class="panel-body text-center">
                                     <button type="submit" class="btn btn-xs btn-primary">Login</button>
                                 </div>
                             </section>
@@ -149,12 +158,20 @@
                             @Html.Hidden("emailKey", "DemoPMEmail")
 
                             <section class="panel">
-                                <header class="panel-heading">
-                                    <div class="panel-heading-icon bg-primary mt-sm">
-                                        <i class="fa fa-bitbucket">Project Manager</i>
+                                <header class="panel-heading container-fluid">
+                                    <div class="text-center">
+                                        <img src="~/Avatars/face_co (1).png" />
+                                    </div>
+                                    <div class="panel-heading-icon bg-primary mt-sm text-center">
+                                        Project Manager
+                                    </div>
+                                    <hr />
+                                    <div class="row container-fluid text-center">
+                                        Create Projects, Edit given Projects and Tickets.
+                                        Assign/Unassign Developers from Projects and Tickets
                                     </div>
                                 </header>
-                                <div class="panel-body">
+                                <div class="panel-body text-center">
                                     <button type="submit" class="btn btn-xs btn-primary">Login</button>
                                 </div>
                             </section>
@@ -168,11 +185,20 @@
 
                             <section class="panel">
                                 <header class="panel-heading">
-                                    <div class="panel-heading-icon bg-primary mt-sm">
-                                        <i class="fa fa-bitbucket">Developer</i>
+                                    <div class="text-center">
+                                        <img src="~/Avatars/face_co (4).png" />
+
+                                    </div>
+                                    <div class="panel-heading-icon bg-primary mt-sm text-center">
+                                        Developer
+                                    </div>
+                                    <hr />
+                                    <div class="row container-fluid text-center">
+                                        View Projects and Tickets which you are assigned to. Create update comments on Tickets.
+                                        Assigned to work on Projects and Tickets.
                                     </div>
                                 </header>
-                                <div class="panel-body">
+                                <div class="panel-body text-center">
                                     <button type="submit" class="btn btn-xs btn-primary">Login</button>
                                 </div>
                             </section>
@@ -186,11 +212,20 @@
 
                             <section class="panel">
                                 <header class="panel-heading">
-                                    <div class="panel-heading-icon bg-primary mt-sm">
-                                        <i class="fa fa-bitbucket">Submitter</i>
+                                    <div class="text-center">
+                                        <img src="~/Avatars/face_co (3).png" />
+
+                                    </div>
+                                    <div class="panel-heading-icon bg-primary mt-sm text-center">
+                                        Submitter
+                                    </div>
+                                    <hr />
+                                    <div class="row text-center container-fluid">
+                                        Create Tickets for assigned Projects.
+                                        Edit and Comment on tickets which you have submitted.
                                     </div>
                                 </header>
-                                <div class="panel-body">
+                                <div class="panel-body text-center">
                                     <button type="submit" class="btn btn-xs btn-primary">Login</button>
                                 </div>
                             </section>

@@ -211,6 +211,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Avatars\default_user.png" />
+    <Content Include="Avatars\face_co %281%29.png" />
+    <Content Include="Avatars\face_co %283%29.png" />
+    <Content Include="Avatars\face_co %284%29.png" />
+    <Content Include="Avatars\face_co.png" />
     <Content Include="Content\adminpro-custon-icon.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-editable.css" />

@@ -10,7 +10,7 @@ using Shaheer_BugTracker.Models;
 
 namespace Shaheer_BugTracker.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -333,7 +333,7 @@ namespace Shaheer_BugTracker.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +384,6 @@ namespace Shaheer_BugTracker.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

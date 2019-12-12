@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Shaheer_BugTracker.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
