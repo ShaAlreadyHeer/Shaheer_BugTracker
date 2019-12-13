@@ -90,7 +90,7 @@
                         <div class="col-lg-9">
                             <div class="flot-chart flot-chart-dashtwo">
                                 <h3>Ticket Counter</h3>
-                                <div  id="demoChart1"></div>
+                                <div id="demoChart1"></div>
                             </div>
                         </div>
                     </div>
@@ -104,24 +104,20 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="sparkline9-list shadow-reset mg-tb-30">
-                    @*<div class="sparkline9-hd">
-                        <div class="main-sparkline9-hd">
-                            <h1>User project list</h1>
-                            <div class="sparkline9-outline-icon">
-                                <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
-                                <span><i class="fa fa-wrench"></i></span>
-                                <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sparkline9-graph dashone-comment">
-                        <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
-                            <table id="projectTable" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
-                                <thead>
+                    <div class="sparkline8-graph">
+                        <div class="datatable-dashv1-list custom-datatable-overright ">
+                            <table id="projectTable" class="table table-striped">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <th data-field="id">ID</th>
-                                        <th data-field="status" data-editable="true">Name</th>
-                                        <th data-field="date" data-editable="true">Date</th>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
                                     </tr>
                                 </thead>
                                 @foreach (var project in Model.myProjects)
@@ -140,271 +136,16 @@
                                 }
                             </table>
                         </div>
-                    </div>*@
-                    <div class="sparkline8-graph">
-                        <div class="datatable-dashv1-list custom-datatable-overright ">
-                        <table id="projectTable" class="table table-striped" >
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>
-                                        Id
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Date
-                                    </th>
-                                </tr>
-                            </thead>
-                            @foreach (var project in Model.myProjects)
-                            {
-                                <tr>
-                                    <td>
-                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.Id)</a>
-                                    </td>
-                                    <td>
-                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.ProjectName)</a>
-                                    </td>
-                                    <td>
-                                        <a href=@Url.Action("Details", "Projects", new {id = project.Id} )>@Html.DisplayFor(modelItem => project.CreatedDate)</a>
-                                    </td>
-                                </tr>
-                            }
-                        </table>
-                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="dashtwo-order-list shadow-reset">
-                    <div class="row">
-                            <div class="flot-chart flot-chart-dashtwo">
-                                <h3>Ticket Status Counter</h3>
-                                <div id="demoChart2"></div>
-                                <br />
-                            </div>
-                    </div>
-                </div>
-            </div><br />
-        </div>
-    </div>
-</div>
-<!-- Transitions Start-->
-<div class="transition-world-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="transition-world-list shadow-reset">
-                    <div class="sparkline7-list mg-b-40">
-                        <div class="sparkline7-hd">
-                            <div class="main-spark7-hd">
-                                <h1>Transitions <span class="res-ds-n">Worldwide</span></h1>
-                                <div class="sparkline7-outline-icon">
-                                    <span class="sparkline7-collapse-link"><i class="fa fa-chevron-up"></i></span>
-                                    <span><i class="fa fa-wrench"></i></span>
-                                    <span class="sparkline7-collapse-close"><i class="fa fa-times"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sparkline7-graph">
+                <div class="sparkline9-list shadow-reset mg-tb-30">
+                    <div class="sparkline8-graph">
+                        <div class="custom-datatable-overright ">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
-                                        <div id="toolbar">
-                                            <select class="form-control">
-                                                <option value="">Export Basic</option>
-                                                <option value="all">Export All</option>
-                                                <option value="selected">Export Selected</option>
-                                            </select>
-                                        </div>
-                                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
-                                            <thead>
-                                                <tr>
-                                                    <th data-field="state" data-checkbox="true"></th>
-                                                    <th data-field="id">No</th>
-                                                    <th data-field="method" data-editable="true">Method</th>
-                                                    <th data-field="date" data-editable="true">Date</th>
-                                                    <th data-field="country" data-editable="true">Country</th>
-                                                    <th data-field="amount" data-editable="true">Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>1</td>
-                                                    <td>Paypal</td>
-                                                    <td>11:20pm</td>
-                                                    <td>United State</td>
-                                                    <td>$2413</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>2</td>
-                                                    <td>Payoneer</td>
-                                                    <td>5:20am</td>
-                                                    <td>Canada</td>
-                                                    <td>$4565</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>3</td>
-                                                    <td>Skill</td>
-                                                    <td>1 day Ago</td>
-                                                    <td>China</td>
-                                                    <td>$6888</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>4</td>
-                                                    <td>Credit Card</td>
-                                                    <td>2 day Ago</td>
-                                                    <td>France</td>
-                                                    <td>$8789</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>5</td>
-                                                    <td>Master Card</td>
-                                                    <td>5 days ago</td>
-                                                    <td>Brazil</td>
-                                                    <td>$4565</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>6</td>
-                                                    <td>Visa</td>
-                                                    <td>10 days ago</td>
-                                                    <td>United Kingdom</td>
-                                                    <td>$4554</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>7</td>
-                                                    <td>Pizza</td>
-                                                    <td>15 days ago</td>
-                                                    <td>Germany</td>
-                                                    <td>$8789</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>8</td>
-                                                    <td>Master Card</td>
-                                                    <td>20 days ago</td>
-                                                    <td>Brazil</td>
-                                                    <td>$1232</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>9</td>
-                                                    <td>Skill</td>
-                                                    <td>22 days ago</td>
-                                                    <td>India</td>
-                                                    <td>$5465</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>10</td>
-                                                    <td>Payoneer</td>
-                                                    <td>29 days ago</td>
-                                                    <td>Australia</td>
-                                                    <td>$7887</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>11</td>
-                                                    <td>Credit Card</td>
-                                                    <td>31 days ago</td>
-                                                    <td>Saudi</td>
-                                                    <td>$8782</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>12</td>
-                                                    <td>Master Card</td>
-                                                    <td>40 days ago</td>
-                                                    <td>Netherlands</td>
-                                                    <td>$1569</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>13</td>
-                                                    <td>Pizza</td>
-                                                    <td>50 days ago</td>
-                                                    <td>Brazil</td>
-                                                    <td>$8456</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>14</td>
-                                                    <td>Skill</td>
-                                                    <td>60 days ago</td>
-                                                    <td>United State</td>
-                                                    <td>$3654</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>15</td>
-                                                    <td>Master Card</td>
-                                                    <td>70 days ago</td>
-                                                    <td>India</td>
-                                                    <td>$6541</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>16</td>
-                                                    <td>Credit Card</td>
-                                                    <td>75 days ago</td>
-                                                    <td>United Kingdom</td>
-                                                    <td>$9865</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>17</td>
-                                                    <td>Pizza</td>
-                                                    <td>80 days ago</td>
-                                                    <td>United State</td>
-                                                    <td>$4587</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>18</td>
-                                                    <td>Payoneer</td>
-                                                    <td>82 days ago</td>
-                                                    <td>Netherlands</td>
-                                                    <td>$6587</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>19</td>
-                                                    <td>Credit Card</td>
-                                                    <td>85 days ago</td>
-                                                    <td>United Kingdom</td>
-                                                    <td>$1478</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>20</td>
-                                                    <td>Master Card</td>
-                                                    <td>87 days ago</td>
-                                                    <td>India</td>
-                                                    <td>$568</td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>21</td>
-                                                    <td>Payoneer</td>
-                                                    <td>90 days ago</td>
-                                                    <td>United State</td>
-                                                    <td>$2547</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="vectorjsmarp" id="world-map"></div>
-                                </div>
+                                <h3>Ticket Status Counter</h3>
+                                <div id="demoChart3"></div>
                             </div>
                         </div>
                     </div>
@@ -413,7 +154,6 @@
         </div>
     </div>
 </div>
-<!-- Transitions End-->
 <!-- Footer Start-->
 <div class="footer-copyright-area">
     <div class="container">
@@ -427,44 +167,6 @@
     </div>
 </div>
 <!-- Footer End-->
-<!-- Chat Box Start-->
-<div class="chat-list-wrap">
-    <div class="chat-list-adminpro">
-        <div class="chat-button">
-            <span data-toggle="collapse" data-target="#chat" class="chat-icon-link"><i class="fa fa-comments"></i></span>
-        </div>
-        <div id="chat" class="collapse chat-box-wrap shadow-reset animated zoomInLeft">
-            <div class="chat-main-list">
-                <div class="chat-heading">
-                    <h2>Messanger</h2>
-                </div>
-                <div class="chat-content chat-scrollbar">
-                    <div class="author-chat">
-                        <h3>Monica <span class="chat-date">10:15 am</span></h3>
-                        <p>Hi, what you are doing and where are you gay?</p>
-                    </div>
-                    <div class="client-chat">
-                        <h3>Mamun <span class="chat-date">10:10 am</span></h3>
-                        <p>Now working in graphic design with coding and you?</p>
-                    </div>
-                    <div class="author-chat">
-                        <h3>Monica <span class="chat-date">10:05 am</span></h3>
-                        <p>Practice in programming</p>
-                    </div>
-                    <div class="client-chat">
-                        <h3>Mamun <span class="chat-date">10:02 am</span></h3>
-                        <p>That's good man! carry on...</p>
-                    </div>
-                </div>
-                <div class="chat-send">
-                    <input type="text" placeholder="Type..." />
-                    <span><button type="submit">Send</button></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Chat Box End-->
 @section Scripts
 {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -492,6 +194,18 @@
                     xkey: 'label',
                     ykeys: ['value'],
                     labels: ['Ticket Count'],
+                    resize: true
+                });
+            });
+
+            var url = '@Url.Action("ProduceChart3Data","Graphing")';
+            $.post(url).then(function (response) {
+                new Morris.Donut({
+                    element: 'demoChart3',
+                    data: response,
+                    xkey: 'label',
+                    ykeys: ['value'],
+                    labels: ["User On Project Count"],
                     resize: true
                 });
             });

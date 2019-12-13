@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,13 +14,34 @@ namespace Shaheer_BugTracker.Models
     {
 
         [Display(Name = "FirstName")]
+        [StringLength(30,MinimumLength = 3, ErrorMessage = "First Name must contain 3 - 30 Characters")]
         public string FirstName { get; set; }
         [Display(Name = "LastName")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Last Name must contain 3 - 30 Characters")]
         public string LastName { get; set; }
         [Display(Name = "DisplayName")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "First Name must contain 3 - 30 Characters")]
         public string DisplayName { get; set; }
         
         public string AvatarPath { get; set; }
+
+        [NotMapped]
+        public string FullNameEmail
+        {
+            get
+            {
+                return $"{Email}, -{FirstName} {LastName}";
+            }
+        }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
 
 
         //Children

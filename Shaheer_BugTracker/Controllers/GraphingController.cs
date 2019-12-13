@@ -17,6 +17,8 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
+
+
         public JsonResult ProduceChart1Data()
         {
             var myData = new List<MorrisBarData>();
@@ -35,7 +37,6 @@ namespace Shaheer_BugTracker.Controllers
         public JsonResult ProduceChart2Data()
         {
             var myData = new List<MorrisBarData>();
-            MorrisBarData data = null;
             foreach(var status in db.TicketStatuses.ToList())
             {
                 myData.Add(new MorrisBarData
@@ -43,6 +44,20 @@ namespace Shaheer_BugTracker.Controllers
                     label = status.StatusName,
                     value = db.Tickets.Where(t => t.TicketStatus.StatusName
                     == status.StatusName).Count()
+                });
+            }
+            return Json(myData);
+        }
+
+        public JsonResult ProduceChart3Data()
+        {
+            var myData = new List<MorrisBarData>();
+            foreach(var proj in db.Projects.ToList())
+            {
+                myData.Add(new MorrisBarData
+                {
+                    label = proj.ProjectName,
+                    value = db.Projects.Where(t => t.Users == proj.Users).Count()
                 });
             }
             return Json(myData);
