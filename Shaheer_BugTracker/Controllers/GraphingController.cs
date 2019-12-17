@@ -54,10 +54,12 @@ namespace Shaheer_BugTracker.Controllers
             var myData = new List<MorrisBarData>();
             foreach(var proj in db.Projects.ToList())
             {
+                var projId = proj.Id;
+
                 myData.Add(new MorrisBarData
                 {
                     label = proj.ProjectName,
-                    value = db.Projects.Where(t => t.Users == proj.Users).Count()
+                    value = db.Projects.Where(p => p.Id == projId).SelectMany(p => p.Users).Count(),
                 });
             }
             return Json(myData);

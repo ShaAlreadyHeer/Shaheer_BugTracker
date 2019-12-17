@@ -55,7 +55,6 @@ namespace Shaheer_BugTracker.Controllers
             }
         }
 
-        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -86,7 +85,6 @@ namespace Shaheer_BugTracker.Controllers
         }
 
 
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -164,8 +162,6 @@ namespace Shaheer_BugTracker.Controllers
         }
 
 
-
-        //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -178,7 +174,6 @@ namespace Shaheer_BugTracker.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]
@@ -228,7 +223,6 @@ namespace Shaheer_BugTracker.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
@@ -236,7 +230,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -264,7 +257,6 @@ namespace Shaheer_BugTracker.Controllers
             return View(model);
         }
 
-        //
         // GET:
         [HttpGet]
         [AllowAnonymous]
@@ -273,7 +265,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // POST:
         [HttpPost]
         [AllowAnonymous]
@@ -298,7 +289,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -306,7 +296,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
@@ -314,7 +303,6 @@ namespace Shaheer_BugTracker.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -340,7 +328,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
@@ -348,7 +335,6 @@ namespace Shaheer_BugTracker.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -359,7 +345,6 @@ namespace Shaheer_BugTracker.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
         // GET: /Account/SendCode
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
@@ -374,7 +359,6 @@ namespace Shaheer_BugTracker.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
@@ -394,7 +378,6 @@ namespace Shaheer_BugTracker.Controllers
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -424,7 +407,6 @@ namespace Shaheer_BugTracker.Controllers
             }
         }
 
-        //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
@@ -462,17 +444,15 @@ namespace Shaheer_BugTracker.Controllers
             return View(model);
         }
 
-        //
         // POST: /Account/LogOff
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CustomLogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login", "Account");
         }
 
-        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()

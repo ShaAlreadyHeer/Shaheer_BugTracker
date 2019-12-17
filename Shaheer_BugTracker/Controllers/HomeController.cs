@@ -15,7 +15,7 @@ namespace Shaheer_BugTracker.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
+        //[Authorize]
         public ActionResult Index()
         {
             var data = new DashboardView();

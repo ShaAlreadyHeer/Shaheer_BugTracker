@@ -96,116 +96,55 @@
     <div class="project-details-area mg-b-40">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="col-lg-9">
                     <div class="project-details-wrap shadow-reset">
                         <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                <div class="project-details-title">
-                                    <h2><span class="profile-details-name-nn"></span></h2>
-                                    @Html.DisplayFor(model => model.Description)
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.AssignedToUser.FirstName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.AssignedToUser.FirstName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.OwnerUser.FirstName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.OwnerUser.FirstName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.Project.ProjectName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.Project.ProjectName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.TicketPriority.PriorityName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.TicketPriority.PriorityName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.TicketStatus.StatusName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.TicketStatus.StatusName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.TicketType.TypeName)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.TicketType.TypeName)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.Title)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.Title)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.Description)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.Description)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.Created)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.Created)
-                                        </dd>
-
-                                        <dt>
-                                            @Html.DisplayNameFor(model => model.Updated)
-                                        </dt>
-
-                                        <dd>
-                                            @Html.DisplayFor(model => model.Updated)
-                                        </dd>
-
-                                    </dl>
-                                    <br />
-                                    <p>
-                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-                                        @Html.ActionLink("Back to List", "Index")
-                                    </p>
-                                    @foreach (var Id in dashBoard.myTickets)
+                            <div class="col-md-8 project-details-title">
+                                <strong>Project Name: </strong>@Html.DisplayFor(model => model.Project.ProjectName) <br />
+                                <strong>Assigned To: </strong> @Html.DisplayFor(model => model.AssignedToUser.FirstName)<br />
+                                <strong>Ticket Priority: </strong> @Html.DisplayFor(model => model.TicketPriority.PriorityName)<br />
+                                <strong>Ticket Status:  </strong> @Html.DisplayFor(model => model.TicketStatus.StatusName)<br />
+                                <strong>Ticket Name: </strong> @Html.DisplayFor(model => model.Title) <br />
+                                <strong>Description:  </strong> @Html.DisplayFor(model => model.Description)<br />
+                                <strong> Created: </strong> @Html.DisplayFor(model => model.Created)<br />
+                                @if(Model.Updated != null)
+                                {
+                                <strong> Updated: </strong> @Html.DisplayFor(model => model.Updated)<br />                                
+                                }
+                                <p>
+                                    @if(User.IsInRole("Admin"))
                                     {
-                                        @Html.ActionLink("Edit", "Edit", new { model = Model.Id })
-                                        @Html.ActionLink("Delete", "Delete", new { model = Model.Id })
+                                    @Html.ActionLink("Edit","Edit", new { id = Model.Id })<br />
                                     }
-                                </div>
+                                    @Html.ActionLink("Back to List","Index")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="project-details-wrap shadow-reset">
+                        <div class="row container">
+                            <div class="row">
+                                Comments
+                            </div>
+                            <div class="row">
+                                List Comments
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="project-details-wrap shadow-reset">
+                            <div class="project-details-title">
                                 @using (Html.BeginForm("Create", "TicketAttachments", FormMethod.Post, new { enctype = "Multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     @Html.Hidden("TicketId", Model.Id)
-                                    @Html.Label("Ticket Attachment", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.Label("Ticket Attachment", htmlAttributes: new { @class = "control-label" })
 
                                     <input type="file" name="image" class="form-control" />
                                     @Html.ValidationMessage("Attach.Filepath", "", new { @class = "text-danger" })
-
-
                                     <button type="submit" class="btn btn-sm btn-primary">Add Attachment</button>
                                 }
                                 <div class="form-group">
@@ -214,44 +153,6 @@
                                         <a href="@Url.Content(Attach.FilePath)" target="_blank">@Attach.FilePath.Split('/')[2]</a> <br />
                                     }
                                 </div>
-                                <div>
-                                    @foreach (var comment in Model.TicketComments)
-                                    {
-                                        <div class="container mt-3">
-                                            <h3>@comment.User.DisplayName</h3>
-                                            <div class="media">
-                                                <img src="@comment.User.AvatarPath" style="width:100px" />
-                                                <div class="media-body">
-                                                    <h4>Written: @comment.Created.ToString("MMM dd, yyyy")</h4>
-                                                    <p>@comment.Comment</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                                <div>
-                                    @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("TicketId", Model.Id)
-                                        <div class="row">
-                                            <div class="offset-3 col-md-6">
-                                                @Html.TextArea("Comment", new { rows = 5, cols = 50, placeholder = "Add Comment" })
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="offset-3 col-md-6">
-                                                <button type="submit" class="btn btn-sm btn-dark">Add</button>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                                @*<p>
-                                       @foreach (var history in Model.TicketHistories)
-                                       {
-                                       <p>The @history.Property has been changed from @history.OldValue.ToString() to @history.NewValue.ToString()</p>
-                                    </p>*@
-
                             </div>
                         </div>
                     </div>
@@ -263,7 +164,7 @@
 
 
 
-    }
+
 
     <!-- Footer Start-->
     <div class="footer-copyright-area">
