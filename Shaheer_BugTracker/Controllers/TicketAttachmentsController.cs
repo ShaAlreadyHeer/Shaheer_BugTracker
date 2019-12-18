@@ -62,7 +62,7 @@ namespace Shaheer_BugTracker.Controllers
                 ticketAttachment.Created = DateTime.Now;
                 db.TicketAttachments.Add(ticketAttachment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Tickets");
             }
 
             return View(ticketAttachment);
